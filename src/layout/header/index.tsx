@@ -41,9 +41,11 @@ export default function Header() {
             <div className="flex gap-4 items-center">
                 {
                     menu.map((item) => (
-                        <Link key={item.name} href={item.path}>
-                            {item.name}
-                        </Link>
+                        <div className={router.pathname === item.path ? 'border-b-2 border-dashed' : ''} key={item.name}>
+                            <Link href={item.path}>
+                                {item.name}
+                            </Link>
+                        </div>
                     ))
                 }
             </div>
