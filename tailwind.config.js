@@ -7,17 +7,19 @@ module.exports = {
   ],
   theme: {
     extend: {
-
-    },
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      'white': '#ffffff',
-      'lor-darken': {
-        100: '#1D2026',
-        200: '#121418',
+      backgroundImage: {
+        'cover': 'url(/assets/images/mount-doom.jpg)'
       },
-      // ...
+      colors: {
+        'lordarken': {
+          500: '#FBB87C',
+          400: '#CD4FAF',
+          300: '#9D5DEB',
+          200: '#512C8B',
+          100: '#1D2026',
+          50: '#121418',
+        },
+      },
     },
   },
 

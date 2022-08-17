@@ -5,10 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1002f0cb-a004-4eb7-ad43-2e393a7fed50" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/assets/fonts/ring-bearer.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/mount-doom.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/one-ring.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/tolkien-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/tolkien-logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/button/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/_document.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/fonts.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/lor-artifacts.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lor-artifacts.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layout/banner/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/banner/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/footer/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/header/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/theme.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/theme.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +46,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/bruno/repos/personal/frontend/lor-artifacts&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/bruno/repos/personal/frontend/lor-artifacts/public/assets/images&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -42,7 +57,14 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/assets/images" />
+      <recent name="$PROJECT_DIR$/public/images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/assets/images" />
+      <recent name="$PROJECT_DIR$/public/assets/fonts" />
+      <recent name="$PROJECT_DIR$/public/assets" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
@@ -69,7 +91,8 @@
       <workItem from="1660606584470" duration="988000" />
       <workItem from="1660607572893" duration="4003000" />
       <workItem from="1660648448836" duration="17000" />
-      <workItem from="1660687483239" duration="4262000" />
+      <workItem from="1660687483239" duration="20821000" />
+      <workItem from="1660758317893" duration="8221000" />
     </task>
     <servers />
   </component>

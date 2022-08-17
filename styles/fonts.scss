@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'RingBearer';
+  src: url('/assets/fonts/ring-bearer.ttf');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: optional;
+}
+
+* {
+  font-family: 'Merriweather', serif;
+}
+
+h1 {
+  @apply text-6xl;
+}
+
+h2 {
+  @apply text-5xl;
+}
+
+h3 {
+  @apply text-4xl;
+}
+
+h4 {
+  @apply text-3xl;
+}
+
+h5 {
+  @apply text-2xl;
+}

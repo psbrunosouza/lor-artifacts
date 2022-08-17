@@ -6,9 +6,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "feather-icons": "^4.29.0",
     "next": "latest",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-feather": "^2.0.10",
     "sass": "^1.54.4"
   },
   "devDependencies": {
