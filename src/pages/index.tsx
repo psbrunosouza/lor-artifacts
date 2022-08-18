@@ -51,8 +51,22 @@ const Home: NextPage = () => {
 
               <div className="flex justify-center mt-14">
                   <Swiper
-                      spaceBetween={50}
-                      slidesPerView={3}
+                      breakpoints={{
+                          "@0.00": {
+                              slidesPerView: 1,
+                              spaceBetween: 10,
+                          },
+                          "@0.75": {
+                              slidesPerView: 2,
+                              spaceBetween: 20,
+                          },
+                          "@1.00": {
+                              slidesPerView: 3,
+                              spaceBetween: 40,
+                          },
+                      }}
+                      slidesPerView={1}
+                      spaceBetween={10}
                       modules={[Pagination, Keyboard]}
                       centeredSlides={true}
                       keyboard={{

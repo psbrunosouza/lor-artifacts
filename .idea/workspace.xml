@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1002f0cb-a004-4eb7-ad43-2e393a7fed50" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/collection/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/header/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +76,7 @@
       <workItem from="1660648448836" duration="17000" />
       <workItem from="1660687483239" duration="20821000" />
       <workItem from="1660758317893" duration="14901000" />
+      <workItem from="1660819407202" duration="2149000" />
     </task>
     <servers />
   </component>
