@@ -15,25 +15,23 @@ export default function Banner() {
     }, [])
 
     return (
-        <div className="bg-cover flex items-center justify-center gap-48 object-contain h-screen w-full">
-            <div className="flex flex-col items-start">
+        <div className="bg-cover flex px-8 items-center justify-center object-contain h-screen w-full md:gap-64">
+            <div className="flex justify-center md:justify-center text-center md:text-start flex-col ">
                 <h2>Tolkien Universe</h2>
                 <h1 className="bg-clip-text bg-gradient-to-l text-transparent from-lordarken-300 via-lordarken-400 to-lordarken-500">Artifacts</h1>
-                <span>
+                <span className="mt-6 md:w-[420px]">
                     a place to learn more about artifacts founded in the Tolkien universe.
-                </span>
-                <span>
                     We will introduce you in this magical adventure through the powerful,
-                </span>
-                <span>
                     lovely and beautiful artifacts writed by Tolkien.
                 </span>
-                <div className="mt-2">
-                    <Button><ChevronsRight></ChevronsRight>More</Button>
+                <div className="flex justify-center md:justify-start mt-6 w-full md:w-auto">
+                    <Button classes="w-full md:w-auto">
+                        <ChevronsRight></ChevronsRight>More
+                    </Button>
                 </div>
             </div>
 
-            <div>
+            <div className="hidden md:block">
                 <img ref={ringImageRef} alt="one-ring" width="280px" height="280px" src="/assets/images/one-ring.png" />
             </div>
         </div>
