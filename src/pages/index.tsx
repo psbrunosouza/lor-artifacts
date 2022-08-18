@@ -37,56 +37,53 @@ const Home: NextPage = () => {
         <link rel="icon" href="/public/favicon.ico" />
       </Head>
 
-      <main className="min-h-[420px] w-screen flex justify-center pt-16 pb-24">
-          <div className="w-1/2">
-              <h3 className="text-center bg-clip-text bg-gradient-to-l text-transparent from-lordarken-300 via-lordarken-400 to-lordarken-500">Collection</h3>
-              <p className="pt-4">
-                  We aim to be the biggest wiki about all artifacts from Tolkien universe, but initially,
-                  we are gonna talk only about the rings of power. Its features, skills, bearers,
-                  story and introduce a timeline to tell more about its paths over the middle earth.
-              </p>
-              <div className="flex justify-center pt-4">
-                  <Button>Explore</Button>
-              </div>
-
-              <div className="flex justify-center mt-14">
-                  <Swiper
-                      breakpoints={{
-                          "@0.00": {
-                              slidesPerView: 1,
-                              spaceBetween: 10,
-                          },
-                          "@0.75": {
-                              slidesPerView: 2,
-                              spaceBetween: 20,
-                          },
-                          "@1.00": {
-                              slidesPerView: 3,
-                              spaceBetween: 40,
-                          },
-                      }}
-                      slidesPerView={1}
-                      spaceBetween={10}
-                      modules={[Pagination, Keyboard]}
-                      centeredSlides={true}
-                      keyboard={{
-                          enabled: true,
-                      }}
-                      pagination={{
-                          clickable: true,
-                      }}
-                      navigation={true}
-                      virtual={true}
-                  >
-                      {
-                          artifacts.map((artifact, index, ) => (
-                              <SwiperSlide virtualIndex={index} key={artifact.id}>
-                                  <img alt={artifact.path} className="w-[280px] h-[320px] rounded object-cover" src={artifact.image}/>
-                              </SwiperSlide>
-                          ))
-                      }
-                  </Swiper>
-              </div>
+      <main className="w-full md:w-1/2 m-auto flex flex-col justify-center py-16 px-8">
+          <h3 className="text-center bg-clip-text bg-gradient-to-l text-transparent from-lordarken-300 via-lordarken-400 to-lordarken-500">Collection</h3>
+          <p className="pt-8">
+              We aim to be the biggest wiki about all artifacts from Tolkien universe, but initially,
+              we are gonna talk only about the rings of power. Its features, skills, bearers,
+              story and introduce a timeline to tell more about its paths over the middle earth.
+          </p>
+          <div className="flex justify-center pt-8">
+              <Button classes="w-full md:w-auto">Explore</Button>
+          </div>
+          <div className="flex justify-center mt-16">
+              <Swiper
+                  breakpoints={{
+                      "@0.00": {
+                          slidesPerView: 1,
+                          spaceBetween: 10,
+                      },
+                      "@0.75": {
+                          slidesPerView: 2,
+                          spaceBetween: 20,
+                      },
+                      "@1.00": {
+                          slidesPerView: 3,
+                          spaceBetween: 40,
+                      },
+                  }}
+                  slidesPerView={1}
+                  spaceBetween={10}
+                  modules={[Pagination, Keyboard]}
+                  centeredSlides={true}
+                  keyboard={{
+                      enabled: true,
+                  }}
+                  pagination={{
+                      clickable: true,
+                  }}
+                  navigation={true}
+                  virtual={true}
+              >
+                  {
+                      artifacts.map((artifact, index, ) => (
+                          <SwiperSlide virtualIndex={index} key={artifact.id}>
+                              <img alt={artifact.path} className="w-[280px] h-[320px] rounded object-cover" src={artifact.image}/>
+                          </SwiperSlide>
+                      ))
+                  }
+              </Swiper>
           </div>
       </main>
     </Layout>

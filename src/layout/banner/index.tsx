@@ -1,6 +1,6 @@
 import {useEffect, useRef} from "react";
 import {Button} from "../../components/button";
-import { ChevronsRight } from 'react-feather';
+import {ChevronsRight, MoreHorizontal} from 'react-feather';
 
 export default function Banner() {
     const ringImageRef = useRef<HTMLImageElement>(null);
@@ -26,7 +26,7 @@ export default function Banner() {
                 </span>
                 <div className="flex justify-center md:justify-start mt-6 w-full md:w-auto">
                     <Button classes="w-full md:w-auto">
-                        <ChevronsRight></ChevronsRight>More
+                        <span>See more</span>
                     </Button>
                 </div>
             </div>
