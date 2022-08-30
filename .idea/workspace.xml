@@ -9,6 +9,9 @@
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layout/banner/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/banner/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layout/footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/footer/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/header/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/collection/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/collection/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,6 +85,9 @@
       <workItem from="1660819407202" duration="2286000" />
       <workItem from="1660849100594" duration="7790000" />
       <workItem from="1660860816096" duration="341000" />
+      <workItem from="1660861283371" duration="8453000" />
+      <workItem from="1660907408665" duration="5376000" />
+      <workItem from="1661171259156" duration="67000" />
     </task>
     <servers />
   </component>

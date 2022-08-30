@@ -10,7 +10,7 @@ export const Collection: NextPage = () =>  {
                 <link rel="icon" href="/public/favicon.ico" />
             </Head>
 
-            <main className="min-h-[420px]">
+            <main>
             </main>
         </Layout>
     )

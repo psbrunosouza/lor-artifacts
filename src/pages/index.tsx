@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Layout from "../layout";
 import {Button} from "../components/button";
 import {Swiper, SwiperSlide} from "swiper/react";
-import SwiperCore, {Keyboard, Navigation, Pagination, Virtual} from "swiper";
+import SwiperCore, {Autoplay, Keyboard, Navigation, Pagination, Virtual} from "swiper";
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -38,8 +38,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="w-full md:w-1/2 m-auto flex flex-col justify-center py-16 px-8">
-          <h3 className="text-center bg-clip-text bg-gradient-to-l text-transparent from-lordarken-300 via-lordarken-400 to-lordarken-500">Collection</h3>
-          <p className="pt-8">
+          <h3 className="text-center bg-clip-text bg-gradient-to-l text-transparent from-lordarken-300 via-lordarken-400 to-lordarken-500 leading-snug">Collection</h3>
+          <p className="pt-6 text-center md:text-left">
               We aim to be the biggest wiki about all artifacts from Tolkien universe, but initially,
               we are gonna talk only about the rings of power. Its features, skills, bearers,
               story and introduce a timeline to tell more about its paths over the middle earth.
@@ -49,24 +49,27 @@ const Home: NextPage = () => {
           </div>
           <div className="flex justify-center mt-16">
               <Swiper
+                  autoplay={{
+                      delay: 2500,
+                      disableOnInteraction: false,
+                  }}
                   breakpoints={{
-                      "@0.00": {
+                      "640": {
                           slidesPerView: 1,
+                      },
+                      "768": {
+                          slidesPerView: 1,
+                      },
+                      '1024': {
+                          slidesPerView: 2,
                           spaceBetween: 10,
                       },
-                      "@0.75": {
-                          slidesPerView: 2,
-                          spaceBetween: 20,
-                      },
-                      "@1.00": {
+                      '1536': {
                           slidesPerView: 3,
-                          spaceBetween: 40,
-                      },
+                          spaceBetween: 10,
+                      }
                   }}
-                  slidesPerView={1}
-                  spaceBetween={10}
-                  modules={[Pagination, Keyboard]}
-                  centeredSlides={true}
+                  modules={[Pagination, Keyboard, Autoplay]}
                   keyboard={{
                       enabled: true,
                   }}
@@ -79,7 +82,7 @@ const Home: NextPage = () => {
                   {
                       artifacts.map((artifact, index, ) => (
                           <SwiperSlide virtualIndex={index} key={artifact.id}>
-                              <img alt={artifact.path} className="w-[280px] h-[320px] rounded object-cover" src={artifact.image}/>
+                              <img alt={artifact.path} className="h-[320px] w-full rounded object-cover" src={artifact.image}/>
                           </SwiperSlide>
                       ))
                   }
