@@ -11,7 +11,7 @@ module.exports = {
         'cover': 'url(/assets/images/mount-doom.jpg)'
       },
       colors: {
-        'lordarken': {
+        'lor': {
           500: '#FBB87C',
           400: '#CD4FAF',
           300: '#9D5DEB',

@@ -8,7 +8,7 @@ interface IButton extends ButtonHTMLAttributes<HTMLButtonElement>{
 
 export function Button({ Icon, children, classes, ...props}: IButton) {
     return (
-         <button {...props} className={`${classes} text-center justify-center bg-lordarken-200 text-white p-2 rounded flex`}>
+         <button {...props} className={`${classes} text-center justify-center bg-lor-200 text-white p-2 px-6 rounded flex`}>
              {children}
          </button>
     )
