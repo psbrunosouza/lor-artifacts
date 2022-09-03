@@ -17,7 +17,7 @@ export default function Layout({children}: ILayout){
             {
                router.pathname === '/' ? <Banner></Banner> : null
             }
-            <div className="h-[calc(100vh-64px)]">
+            <div className="min-h-[calc(100vh)]">
                 {children}
             </div>
             <Footer></Footer>

@@ -1,9 +1,10 @@
-export interface IArtifacts {
-    id: number;
-    path: string;
-    status: 'special' | 'rare' | 'legend';
-    image: string;
-    power: number;
-    type: string;
-    title: string;
+import { IDefault } from './IDefault'
+
+export interface IArtifacts extends IDefault {
+  path: string
+  status: 'special' | 'rare' | 'legend'
+  image: string
+  power: number
+  type: string
+  title: string
 }
