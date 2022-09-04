@@ -18,6 +18,8 @@ import { ArtifactCard } from '../components/artifacts-card'
 import { IArtifacts } from '../interfaces/IArtifacts'
 import { IClassification } from '../interfaces/IClassification'
 import { useState } from 'react'
+import { PlaceCard } from '../components/place-card'
+import { ICategories } from '../interfaces/ICategories'
 
 SwiperCore.use([Virtual, Navigation, Pagination])
 
@@ -79,6 +81,19 @@ const Home: NextPage = () => {
       description:
         'but initially, we are gonna talk only about the rings of power. Its features, skills, bearers, story and introduce a timeline to tell more about its paths over the middle earth.',
       color: '#E9B531',
+    },
+  ]
+
+  const categories: ICategories[] = [
+    {
+      id: 1,
+      title: 'sword',
+      image: '/asset/icons/sword.svg',
+    },
+    {
+      id: 2,
+      title: 'sword',
+      image: '/asset/icons/sword.svg',
     },
   ]
 
@@ -262,6 +277,51 @@ const Home: NextPage = () => {
               <p className="pt-8 text-center md:text-left">
                 {classificationDescription}
               </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-fixed">
+          <div className="min-h-[620px] flex items-center backdrop-brightness-50">
+            <div className="w-full md:w-1/2  m-auto flex flex-col justify-center py-16 px-8">
+              <h3 className="text-center  bg-clip-text bg-gradient-to-l text-transparent text-white leading-snug">
+                Places
+              </h3>
+
+              <p className="pt-8 text-center md:text-left">
+                {classificationDescription}
+              </p>
+
+              <div className="pt-8 flex items-center justify-center gap-16">
+                <div className="w-[320px]">
+                  <PlaceCard title=""></PlaceCard>
+                </div>
+                <div className="hidden md:flex w-[320px]">
+                  <PlaceCard title=""></PlaceCard>
+                </div>
+                <div className="hidden lg:flex w-[320px]">
+                  <PlaceCard title=""></PlaceCard>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          className="bg-fixed"
+          style={{ backgroundImage: 'url(/assets/images/mountains.jpg)' }}
+        >
+          <div className="min-h-[620px] flex items-center backdrop-brightness-50">
+            <div className="w-full md:w-1/2  m-auto flex flex-col justify-center py-16 px-8">
+              <h3 className="text-center  bg-clip-text bg-gradient-to-l text-transparent text-white leading-snug">
+                Categories
+              </h3>
+
+              <p className="pt-8 text-center md:text-left">
+                {classificationDescription}
+              </p>
+
+              <div className="pt-8 flex items-center justify-center gap-16"></div>
             </div>
           </div>
         </section>
