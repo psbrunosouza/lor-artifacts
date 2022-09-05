@@ -29,7 +29,7 @@ export function ArtifactCard({
   return (
     <div
       style={{ borderColor: getColorByStats() }}
-      className="h-[320px] w-[240px] flex relative w-full bg-lor-100 rounded-[8px] border-2"
+      className="h-[320px] w-[240px] flex relative bg-lor-100 rounded-[8px] border-2"
     >
       {children}
       <div
