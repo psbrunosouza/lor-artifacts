@@ -1,11 +1,11 @@
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
 
 interface IArtifactCard {
-  type: string
-  status: 'special' | 'rare' | 'legend'
-  power: number
-  title: string
-  children?: ReactNode
+  type: string;
+  status: 'special' | 'rare' | 'legend';
+  power: number;
+  title: string;
+  children?: ReactNode;
 }
 
 export function ArtifactCard({
@@ -18,20 +18,20 @@ export function ArtifactCard({
   function getColorByStats(): string {
     switch (status) {
       case 'rare':
-        return '#31E991'
+        return '#31E991';
       case 'special':
-        return '#E931E1'
+        return '#E931E1';
       case 'legend':
-        return '#E9B531'
+        return '#E9B531';
     }
   }
 
   return (
     <div
       style={{ borderColor: getColorByStats() }}
-      className="h-[320px] w-[320px] flex relative w-full bg-lor-100 rounded-[8px] border-2"
+      className="h-[320px] w-[240px] flex relative w-full bg-lor-100 rounded-[8px] border-2"
     >
-      {/*{children}*/}
+      {children}
       <div
         style={{ borderColor: getColorByStats() }}
         className="h-[52px] flex items-center justify-center absolute bottom-[-25px] left-[-15px] w-[52px] bg-lor-100 rounded-[50%] border-2 "
@@ -64,5 +64,5 @@ export function ArtifactCard({
         <p className="font-bold text-lor-50">{power}</p>
       </div>
     </div>
-  )
+  );
 }

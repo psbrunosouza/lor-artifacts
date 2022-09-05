@@ -114,9 +114,6 @@ const Home: NextPage<IHomePage> = ({ categories, classifications }) => {
               keyboard={{
                 enabled: true,
               }}
-              pagination={{
-                clickable: true,
-              }}
               navigation={true}
               virtual={true}
             >
@@ -180,9 +177,6 @@ const Home: NextPage<IHomePage> = ({ categories, classifications }) => {
                   keyboard={{
                     enabled: true,
                   }}
-                  pagination={{
-                    clickable: true,
-                  }}
                   navigation={true}
                   virtual={true}
                 >
@@ -241,7 +235,7 @@ const Home: NextPage<IHomePage> = ({ categories, classifications }) => {
               </div>
 
               <p className="pt-8 text-center md:text-left">
-                {/*{classificationDescription}*/}
+                {classificationDescription}
               </p>
             </div>
           </div>
@@ -255,17 +249,19 @@ const Home: NextPage<IHomePage> = ({ categories, classifications }) => {
               </h3>
 
               <p className="pt-8 text-center md:text-left">
-                {classificationDescription}
+                All items or will be classified by the place on it was made or
+                the last location of it. All places go to have its history and
+                characteristics described via some item.
               </p>
 
               <div className="pt-8 flex items-center justify-center gap-16">
-                <div className="w-[320px]">
+                <div>
                   <PlaceCard title=""></PlaceCard>
                 </div>
-                <div className="hidden md:flex w-[320px]">
+                <div className="hidden md:flex ">
                   <PlaceCard title=""></PlaceCard>
                 </div>
-                <div className="hidden lg:flex w-[320px]">
+                <div className="hidden lg:flex ">
                   <PlaceCard title=""></PlaceCard>
                 </div>
               </div>
