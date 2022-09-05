@@ -1,29 +1,35 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Layout from '../layout'
-import { Button } from '../components/button'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Layout from '../layout';
+import { Button } from '../components/button';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {
   Autoplay,
   Keyboard,
   Navigation,
   Pagination,
   Virtual,
-} from 'swiper'
+} from 'swiper';
 
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
-import { ArtifactCard } from '../components/artifacts-card'
-import { IArtifacts } from '../interfaces/IArtifacts'
-import { IClassification } from '../interfaces/IClassification'
-import { useState } from 'react'
-import { PlaceCard } from '../components/place-card'
-import { ICategories } from '../interfaces/ICategories'
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { ArtifactCard } from '../components/artifacts-card';
+import { useState } from 'react';
+import { PlaceCard } from '../components/place-card';
+import { IArtifacts } from '../interfaces/IArtifacts';
+import { IClassification } from '../interfaces/IClassification';
+import { ICategories } from '../interfaces/ICategories';
+import api from '../services/api';
 
-SwiperCore.use([Virtual, Navigation, Pagination])
+SwiperCore.use([Virtual, Navigation, Pagination]);
 
-const Home: NextPage = () => {
+export interface IHomePage {
+  categories: ICategories[];
+  classifications: IClassification[];
+}
+
+const Home: NextPage<IHomePage> = ({ categories, classifications }) => {
   const artifacts: IArtifacts[] = [
     {
       id: 1,
@@ -55,51 +61,11 @@ const Home: NextPage = () => {
       type: '/assets/icons/ring.svg',
       title: 'teste',
     },
-  ]
-
-  const classifications: IClassification[] = [
-    {
-      id: 1,
-      title: 'rare',
-      image: '/assets/icons/ring.svg',
-      description:
-        'We aim to be the biggest wiki about all artifacts from Tolkien universe, but initially, we are gonna talk only about the rings of power. Its features, skills, bearers, story and introduce a timeline to tell more about its paths over the middle earth.',
-      color: '#31E991',
-    },
-    {
-      id: 2,
-      title: 'special',
-      image: '/assets/icons/ring.svg',
-      description:
-        'skills, bearers, story and introduce a timeline to tell more about its paths over the middle earth.',
-      color: '#E931E1',
-    },
-    {
-      id: 3,
-      image: '/assets/icons/ring.svg',
-      title: 'legend',
-      description:
-        'but initially, we are gonna talk only about the rings of power. Its features, skills, bearers, story and introduce a timeline to tell more about its paths over the middle earth.',
-      color: '#E9B531',
-    },
-  ]
-
-  const categories: ICategories[] = [
-    {
-      id: 1,
-      title: 'sword',
-      image: '/asset/icons/sword.svg',
-    },
-    {
-      id: 2,
-      title: 'sword',
-      image: '/asset/icons/sword.svg',
-    },
-  ]
+  ];
 
   const [classificationDescription, setClassificationDescription] = useState(
     classifications[0].description
-  )
+  );
 
   return (
     <Layout>
@@ -182,9 +148,9 @@ const Home: NextPage = () => {
           className="bg-fixed"
           style={{ backgroundImage: 'url(/assets/images/mountains.jpg)' }}
         >
-          <div className="min-h-[620px] flex items-center mt-16 backdrop-brightness-50">
+          <div className="flex items-center mt-16 backdrop-brightness-50">
             <div className="w-full md:w-1/2  m-auto flex flex-col justify-center py-16 px-8">
-              <h3 className="text-center  bg-clip-text bg-gradient-to-l text-transparent text-white leading-snug">
+              <h3 className="text-center  bg-clip-text bg-gradient-to-l text-transparent from-lor-300 via-lor-400 to-lor-500 leading-snug">
                 Classification
               </h3>
 
@@ -275,16 +241,16 @@ const Home: NextPage = () => {
               </div>
 
               <p className="pt-8 text-center md:text-left">
-                {classificationDescription}
+                {/*{classificationDescription}*/}
               </p>
             </div>
           </div>
         </section>
 
         <section className="bg-fixed">
-          <div className="min-h-[620px] flex items-center backdrop-brightness-50">
+          <div className="flex items-center backdrop-brightness-50">
             <div className="w-full md:w-1/2  m-auto flex flex-col justify-center py-16 px-8">
-              <h3 className="text-center  bg-clip-text bg-gradient-to-l text-transparent text-white leading-snug">
+              <h3 className="text-center  bg-clip-text bg-gradient-to-l text-transparent from-lor-300 via-lor-400 to-lor-500 leading-snug">
                 Places
               </h3>
 
@@ -311,23 +277,56 @@ const Home: NextPage = () => {
           className="bg-fixed"
           style={{ backgroundImage: 'url(/assets/images/mountains.jpg)' }}
         >
-          <div className="min-h-[620px] flex items-center backdrop-brightness-50">
+          <div className=" flex items-center backdrop-brightness-50">
             <div className="w-full md:w-1/2  m-auto flex flex-col justify-center py-16 px-8">
-              <h3 className="text-center  bg-clip-text bg-gradient-to-l text-transparent text-white leading-snug">
+              <h3 className="text-center  bg-clip-text bg-gradient-to-l text-transparent from-lor-300 via-lor-400 to-lor-500 leading-snug">
                 Categories
               </h3>
 
               <p className="pt-8 text-center md:text-left">
-                {classificationDescription}
+                All items will be classified into categories, below you can see
+                a set of icons around some categories used to classification of
+                artifacts. Initially the most present category will be ring,
+                because the main focus for now on the site is to present the
+                rings of power. soon we plan fill this website with a lot of
+                artifacts and more information about the items of the tolkien
+                Universe.
               </p>
 
-              <div className="pt-8 flex items-center justify-center gap-16"></div>
+              <div className="pt-8 flex items-center justify-center flex-wrap gap-16">
+                {categories.map((category) => (
+                  <div
+                    className="flex flex-col justify-center items-center "
+                    key={category.id}
+                  >
+                    <img
+                      src={category.image}
+                      width="84px"
+                      height="84px"
+                      alt={category.title}
+                    />
+                    <span className="text-center">{category.title}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
       </main>
     </Layout>
-  )
+  );
+};
+
+export async function getStaticProps() {
+  const { data: categories } = await api.get('/categories');
+  const { data: statuses } = await api.get('/artifact-statuses');
+
+  return {
+    props: {
+      categories: categories.data,
+      classifications: statuses.data,
+    },
+  };
 }
 
-export default Home
+export default Home;

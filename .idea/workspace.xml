@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1002f0cb-a004-4eb7-ad43-2e393a7fed50" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/place-card/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/ICategories.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/IPlace.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/api/Interceptors/ErrorInterceptor.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/api/Interceptors/ResponseInterceptor.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/api/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +34,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/bruno/repos/personal/frontend/lor-artifacts/public/assets/images&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/bruno/repos/personal/backend/lor-artifacts-api&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -50,11 +52,11 @@
       <recent name="$PROJECT_DIR$/public/images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/services/api" />
+      <recent name="$PROJECT_DIR$/src/services" />
       <recent name="$PROJECT_DIR$/src/components/artifacts-card" />
       <recent name="$PROJECT_DIR$/public/assets/images" />
       <recent name="$PROJECT_DIR$/public/assets/fonts" />
-      <recent name="$PROJECT_DIR$/public/assets" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunManager">
@@ -93,7 +95,8 @@
       <workItem from="1661977625788" duration="2425000" />
       <workItem from="1662030248913" duration="15000" />
       <workItem from="1662209378725" duration="15902000" />
-      <workItem from="1662238719750" duration="3296000" />
+      <workItem from="1662238719750" duration="7821000" />
+      <workItem from="1662334623186" duration="8007000" />
     </task>
     <servers />
   </component>
