@@ -1,6 +1,9 @@
-import { IDefault } from './IDefault'
+import { IDefault } from './IDefault';
 
 export interface IPlace extends IDefault {
-  title: string
-  image: string
+  attributes: {
+    title: string;
+    image: string;
+    description: string;
+  };
 }

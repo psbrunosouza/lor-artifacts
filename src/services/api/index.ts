@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as process from 'process';
-import { responseInterceptor } from './Interceptors/ResponseInterceptor';
-import { errorInterceptor } from './Interceptors/ErrorInterceptor';
+import { responseInterceptor } from './interceptors/ResponseInterceptor';
+import { errorInterceptor } from './interceptors/ErrorInterceptor';
 
 const api = axios.create({
   baseURL: process.env.BASE_URL,

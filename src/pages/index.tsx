@@ -1,70 +1,32 @@
-import type { NextPage } from 'next';
 import Head from 'next/head';
 import Layout from '../layout';
 import { Button } from '../components/button';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, {
-  Autoplay,
-  Keyboard,
-  Navigation,
-  Pagination,
-  Virtual,
-} from 'swiper';
-
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 import { ArtifactCard } from '../components/artifacts-card';
 import { useState } from 'react';
 import { PlaceCard } from '../components/place-card';
 import { IArtifacts } from '../interfaces/IArtifacts';
 import { IClassification } from '../interfaces/IClassification';
 import { ICategories } from '../interfaces/ICategories';
+import { IPlace } from '../interfaces/IPlace';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Keyboard, Navigation, Pagination, Virtual } from 'swiper';
 import api from '../services/api';
 
-SwiperCore.use([Virtual, Navigation, Pagination]);
-
-export interface IHomePage {
+interface IHomePageProps {
   categories: ICategories[];
   classifications: IClassification[];
+  places: IPlace[];
+  artifacts: IArtifacts[];
 }
 
-const Home: NextPage<IHomePage> = ({ categories, classifications }) => {
-  const artifacts: IArtifacts[] = [
-    {
-      id: 1,
-      path: '',
-      status: 'special',
-      image:
-        'https://i.pinimg.com/564x/48/4b/2d/484b2df3212d3728ff8c3cc6a469d750.jpg',
-      power: 95,
-      type: '/assets/icons/ring.svg',
-      title: 'teste',
-    },
-    {
-      id: 2,
-      path: '',
-      status: 'rare',
-      image:
-        'https://www.ufrgs.br/tesauros/_acervo/image/2019/12/img-0019471-4f1144751b.jpg',
-      power: 95,
-      type: '/assets/icons/ring.svg',
-      title: 'teste',
-    },
-    {
-      id: 3,
-      path: '',
-      status: 'legend',
-      image:
-        'https://i0.wp.com/www.valinor.com.br/wp-content/uploads/2010/05/narya1.jpg?resize=281%2C307&ssl=1',
-      power: 95,
-      type: '/assets/icons/ring.svg',
-      title: 'teste',
-    },
-  ];
-
+export default function Home({
+  categories,
+  classifications,
+  places,
+  artifacts,
+}: IHomePageProps) {
   const [classificationDescription, setClassificationDescription] = useState(
-    classifications[0].description
+    classifications[0].attributes.description
   );
 
   return (
@@ -90,10 +52,12 @@ const Home: NextPage<IHomePage> = ({ categories, classifications }) => {
           </div>
           <div className="flex justify-center mt-16">
             <Swiper
+              className="w-full"
               autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,
               }}
+              slidesPerView={4}
               breakpoints={{
                 '640': {
                   slidesPerView: 1,
@@ -110,7 +74,7 @@ const Home: NextPage<IHomePage> = ({ categories, classifications }) => {
                   spaceBetween: 10,
                 },
               }}
-              modules={[Pagination, Keyboard, Autoplay]}
+              modules={[Pagination, Navigation, Virtual, Keyboard, Autoplay]}
               keyboard={{
                 enabled: true,
               }}
@@ -119,20 +83,22 @@ const Home: NextPage<IHomePage> = ({ categories, classifications }) => {
             >
               {artifacts.map((artifact, index) => (
                 <SwiperSlide
-                  className=" p-6 flex justify-center items-center"
+                  className="w-full p-6 flex justify-center items-center"
                   virtualIndex={index}
                   key={artifact.id}
                 >
                   <ArtifactCard
-                    title={artifact.title}
-                    power={artifact.power}
-                    type={artifact.type}
-                    status={artifact.status}
+                    title={artifact.attributes.title}
+                    power={artifact.attributes.power}
+                    type={artifact.attributes.category.data?.attributes.image}
+                    status={
+                      artifact.attributes.artifact_status.data?.attributes.title
+                    }
                   >
                     <img
-                      alt={artifact.path}
+                      alt={artifact.attributes.path}
                       className="h-[320px] w-full rounded object-cover"
-                      src={artifact.image}
+                      src={artifact.attributes.image}
                     />
                   </ArtifactCard>
                 </SwiperSlide>
@@ -151,12 +117,8 @@ const Home: NextPage<IHomePage> = ({ categories, classifications }) => {
                 Classification
               </h3>
 
-              <div className="pt-8 flex items-center justify-center gap-16">
+              <div className="pt-8 ">
                 <Swiper
-                  autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                  }}
                   breakpoints={{
                     '640': {
                       slidesPerView: 1,
@@ -173,7 +135,14 @@ const Home: NextPage<IHomePage> = ({ categories, classifications }) => {
                       spaceBetween: 10,
                     },
                   }}
-                  modules={[Pagination, Keyboard, Autoplay]}
+                  centeredSlides={false}
+                  modules={[
+                    Pagination,
+                    Navigation,
+                    Virtual,
+                    Keyboard,
+                    Autoplay,
+                  ]}
                   keyboard={{
                     enabled: true,
                   }}
@@ -182,19 +151,19 @@ const Home: NextPage<IHomePage> = ({ categories, classifications }) => {
                 >
                   {classifications.map((classification, index) => (
                     <SwiperSlide
-                      className="flex justify-center items-center"
+                      className="w-full flex justify-center"
                       virtualIndex={index}
                       key={classification.id}
                     >
                       <div
                         onClick={() =>
                           setClassificationDescription(
-                            classification.description
+                            classification.attributes.description
                           )
                         }
                         className="h-[160px] w-[160px] bg-white relative cursor-pointer"
                         style={{
-                          backgroundColor: classification.color,
+                          backgroundColor: classification.attributes.color,
                           clipPath:
                             'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
                         }}
@@ -204,28 +173,25 @@ const Home: NextPage<IHomePage> = ({ categories, classifications }) => {
                           flex flex-col
                           justify-center
                           items-center
-                          gap-2
                           absolute
                           left-[3px]
                           right-[3px]
                           bottom-[3px]
                           top-[3px]
-                          flex
-                          justify-center
-                          items-center"
+                          flex"
                           style={{
                             clipPath:
                               'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
                           }}
                         >
                           <img
-                            src={classification.image}
+                            src={classification.attributes.image}
                             height="42px"
-                            alt={classification.title}
+                            alt={classification.attributes.title}
                             width="42px"
-                          ></img>
+                          />
                           <span className="font-bold">
-                            {classification.title}
+                            {classification.attributes.title}
                           </span>
                         </div>
                       </div>
@@ -256,13 +222,31 @@ const Home: NextPage<IHomePage> = ({ categories, classifications }) => {
 
               <div className="pt-8 flex items-center justify-center gap-16">
                 <div>
-                  <PlaceCard title=""></PlaceCard>
+                  <PlaceCard title={places[0].attributes.title}>
+                    <img
+                      src={places[0].attributes.image}
+                      alt={places[0].attributes.title}
+                      className="object-cover rounded-[8px] w-full h-full"
+                    />
+                  </PlaceCard>
                 </div>
                 <div className="hidden md:flex ">
-                  <PlaceCard title=""></PlaceCard>
+                  <PlaceCard title={places[1].attributes.title}>
+                    <img
+                      src={places[1].attributes.image}
+                      alt={places[1].attributes.title}
+                      className="object-cover rounded-[8px] w-full h-full"
+                    />
+                  </PlaceCard>
                 </div>
                 <div className="hidden lg:flex ">
-                  <PlaceCard title=""></PlaceCard>
+                  <PlaceCard title={places[2].attributes.title}>
+                    <img
+                      src={places[2].attributes.image}
+                      alt={places[2].attributes.title}
+                      className="object-cover rounded-[8px] w-full h-full"
+                    />
+                  </PlaceCard>
                 </div>
               </div>
             </div>
@@ -296,12 +280,14 @@ const Home: NextPage<IHomePage> = ({ categories, classifications }) => {
                     key={category.id}
                   >
                     <img
-                      src={category.image}
+                      src={category.attributes.image}
                       width="84px"
                       height="84px"
-                      alt={category.title}
+                      alt={category.attributes.title}
                     />
-                    <span className="text-center">{category.title}</span>
+                    <span className="text-center">
+                      {category.attributes.title}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -311,18 +297,24 @@ const Home: NextPage<IHomePage> = ({ categories, classifications }) => {
       </main>
     </Layout>
   );
-};
+}
 
 export async function getStaticProps() {
-  const { data: categories } = await api.get('/categories');
-  const { data: statuses } = await api.get('/artifact-statuses');
+  const { data: categories } = await api('/categories');
+  const { data: classifications } = await api('/artifact-statuses');
+  const { data: places } = await api('/places');
+  const { data: artifacts } = await api('/artifacts', {
+    params: {
+      populate: '*',
+    },
+  });
 
   return {
     props: {
       categories: categories.data,
-      classifications: statuses.data,
+      classifications: classifications.data,
+      places: places.data,
+      artifacts: artifacts.data,
     },
   };
 }
-
-export default Home;

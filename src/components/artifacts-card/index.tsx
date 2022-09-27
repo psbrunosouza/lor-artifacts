@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-interface IArtifactCard {
+interface IArtifactCardProps {
   type: string;
   status: 'special' | 'rare' | 'legend';
   power: number;
@@ -14,16 +14,15 @@ export function ArtifactCard({
   power,
   title,
   children,
-}: IArtifactCard) {
+}: IArtifactCardProps) {
   function getColorByStats(): string {
-    switch (status) {
-      case 'rare':
-        return '#31E991';
-      case 'special':
-        return '#E931E1';
-      case 'legend':
-        return '#E9B531';
-    }
+    const colors = {
+      rare: '#31E991',
+      special: '#E931E1',
+      legend: '#E9B531',
+    };
+
+    return colors[status];
   }
 
   return (

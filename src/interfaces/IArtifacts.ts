@@ -1,10 +1,16 @@
-import { IDefault } from './IDefault'
+import { IDefault } from './IDefault';
+import { IClassification } from './IClassification';
+import { ICategories } from './ICategories';
+import { IPlace } from './IPlace';
 
 export interface IArtifacts extends IDefault {
-  path: string
-  status: 'special' | 'rare' | 'legend'
-  image: string
-  power: number
-  type: string
-  title: string
+  attributes: {
+    path: string;
+    image: string;
+    power: number;
+    title: string;
+    artifact_status: { data: IClassification };
+    category: { data: ICategories };
+    place: { data: IPlace };
+  };
 }

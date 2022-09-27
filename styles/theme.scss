@@ -48,4 +48,9 @@ body {
       @apply font-bold;
     }
   }
+
+  .swiper-wrapper {
+    @apply flex;
+    @apply justify-center;
+  }
 }
