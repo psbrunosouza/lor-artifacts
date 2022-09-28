@@ -1,20 +1,34 @@
-import { NextPage } from 'next';
+import { IArtifacts } from '../../interfaces/IArtifacts';
+import api from '../../services/api';
+import ReactPaginate from 'react-paginate';
+import { Book, Grid } from 'react-feather';
 import Layout from '../../layout';
 import Head from 'next/head';
 import { SearchComponent } from '../../components/search';
-import { Book, Grid } from 'react-feather';
-import api from '../../services/api';
-import { ICategories } from '../../interfaces/ICategories';
-import { IClassification } from '../../interfaces/IClassification';
-import { IPlace } from '../../interfaces/IPlace';
-import { IArtifacts } from '../../interfaces/IArtifacts';
 import { ArtifactCard } from '../../components/artifacts-card';
+import { useEffect, useState } from 'react';
 
 interface ICollectionPageProps {
   artifacts: IArtifacts[];
 }
 
 export default function Collection({ artifacts }: ICollectionPageProps) {
+  const [currentItems, setCurrentItems] = useState<IArtifacts[]>([]);
+  const [itemsPerPage, setItemsPerPage] = useState(9);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+
+  const handlePageClick = (event: any) => {
+    const newOffset = (event.selected * itemsPerPage) % artifacts.length;
+    setItemOffset(newOffset);
+  };
+
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(artifacts.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(artifacts.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage]);
+
   return (
     <Layout>
       <Head>
@@ -23,9 +37,9 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
       </Head>
 
       <main className="flex justify-center items-center flex-col">
-        <section className=" px-16 w-full md:w-1/2 h-[64px] bg-lor-100 mt-28 border-lor-600 border rounded-[12px] flex items-center justify-between">
-          <h1 className="text-[32px]">Artifacts</h1>
-          <div className="flex gap-4">
+        <section className=" px-16 w-full md:2/3 lg:w-2/3 h-auto p-6 lg:h-[64px] bg-lor-100 mt-28 border-lor-600 border rounded-[12px] flex flex-col lg:flex-row items-center justify-between">
+          <h1 className="text-[32px] mb-8 lg:mb-0">Artifacts</h1>
+          <div className="flex gap-4 mt-8 lg:mt-0">
             <SearchComponent></SearchComponent>
             <button
               type="button"
@@ -42,8 +56,8 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
           </div>
         </section>
 
-        <section className=" px-16 w-full md:w-1/2  mt-4  flex items-center gap-16">
-          {artifacts.map((artifact) => (
+        <section className=" px-16 w-full md:2/3 lg:w-2/3 mt-16 flex flex-col md:flex-row items-center gap-16">
+          {currentItems.map((artifact) => (
             <ArtifactCard
               key={artifact.id}
               title={artifact.attributes.title}
@@ -53,11 +67,28 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
             >
               <img
                 alt={artifact.attributes.path}
-                className="h-[320px] w-full rounded object-cover"
+                className="h-full w-full rounded object-cover"
                 src={artifact.attributes.image}
               />
             </ArtifactCard>
           ))}
+        </section>
+
+        <section className="px-16 w-full md:2/3 lg:w-2/3 my-16 flex justify-center items-center gap-16">
+          <ReactPaginate
+            containerClassName="react-paginate"
+            pageClassName="page-item"
+            nextClassName="next-item"
+            previousClassName="previous-item"
+            activeClassName="active-item"
+            disabledClassName="disabled-item"
+            breakLabel="..."
+            nextLabel="next >"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            pageCount={pageCount}
+            previousLabel="< previous"
+          />
         </section>
       </main>
     </Layout>

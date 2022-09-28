@@ -43,7 +43,7 @@ export function ArtifactCard({
           borderColor: getColorByStats(),
           transform: 'translate(-50%, -50%)',
         }}
-        className="h-[52px] flex justify-center items-center w-[70%] md:w-[50%] rounded-[8px] absolute bottom-[-50px] left-[50%] bg-lor-100 border-2"
+        className="h-[52px] flex justify-center items-center w-[60%] md:w-[50%] rounded-[8px] absolute bottom-[-50px] left-[50%] bg-lor-100 border-2"
       >
         <span
           style={{ color: getColorByStats() }}

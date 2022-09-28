@@ -5,32 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1002f0cb-a004-4eb7-ad43-2e393a7fed50" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/search/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/IResponse.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/api/http/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/api/interceptors/ResponseInterceptor.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/lor-artifacts.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lor-artifacts.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/artifacts-card/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/artifacts-card/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/place-card/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/place-card/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/IArtifacts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/IArtifacts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/ICategories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/ICategories.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/IClassification.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/IClassification.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/IDefault.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/IDefault.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/IPlace.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/IPlace.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_document.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/collection/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/collection/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/api/Interceptors/ErrorInterceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/api/interceptors/ErrorInterceptor.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/api/Interceptors/ResponseInterceptor.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/api/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/theme.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/theme.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +108,8 @@
       <workItem from="1664192979055" duration="9000" />
       <workItem from="1664230694326" duration="1613000" />
       <workItem from="1664242090090" duration="1221000" />
-      <workItem from="1664273152351" duration="101000" />
+      <workItem from="1664273152351" duration="5735000" />
+      <workItem from="1664358642942" duration="1722000" />
     </task>
     <servers />
   </component>

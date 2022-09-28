@@ -53,4 +53,50 @@ body {
     @apply flex;
     @apply justify-center;
   }
+
+  .react-paginate {
+    display: flex;
+    @apply border;
+    @apply rounded-[12px];
+    @apply border-lor-600;
+
+    .page-item {
+      @apply bg-lor-100;
+      @apply w-[42px];
+      @apply h-[42px];
+      @apply flex;
+      @apply justify-center;
+      @apply items-center;
+    }
+
+    .next-item {
+      @apply bg-lor-100;
+      @apply h-[42px];
+      @apply w-auto;
+      @apply flex;
+      @apply justify-center;
+      @apply items-center;
+      @apply rounded-r-[12px];
+      @apply px-3;
+    }
+
+    .previous-item {
+      @apply bg-lor-100;
+      @apply h-[42px];
+      @apply w-auto;
+      @apply flex;
+      @apply justify-center;
+      @apply items-center;
+      @apply rounded-l-[12px];
+      @apply px-3;
+    }
+
+    .disabled-item {
+      @apply text-neutral-400;
+    }
+
+    .active-item {
+      @apply bg-lor-600;
+    }
+  }
 }
