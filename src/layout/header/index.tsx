@@ -15,10 +15,6 @@ export default function Header() {
       name: 'Collection',
       path: '/collection',
     },
-    {
-      name: 'About',
-      path: '/about',
-    },
   ];
 
   async function handleGoToHomePage(): Promise<void> {

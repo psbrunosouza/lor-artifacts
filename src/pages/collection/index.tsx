@@ -7,6 +7,8 @@ import Head from 'next/head';
 import { SearchComponent } from '../../components/search';
 import { ArtifactCard } from '../../components/artifacts-card';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 interface ICollectionPageProps {
   artifacts: IArtifacts[];
@@ -17,6 +19,7 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
   const [itemsPerPage, setItemsPerPage] = useState(9);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
+  const router = useRouter();
 
   const handlePageClick = (event: any) => {
     const newOffset = (event.selected * itemsPerPage) % artifacts.length;
@@ -37,7 +40,7 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
       </Head>
 
       <main className="flex justify-center items-center flex-col">
-        <section className=" px-16 w-full md:2/3 lg:w-2/3 h-auto p-6 lg:h-[64px] bg-lor-100 mt-28 border-lor-600 border rounded-[12px] flex flex-col lg:flex-row items-center justify-between">
+        <section className="px-16 w-full md:2/3 lg:w-2/3 h-auto p-6 lg:h-[64px] bg-lor-100 mt-28 border-lor-600 border rounded-[12px] flex flex-col lg:flex-row items-center justify-between">
           <h1 className="text-[32px] mb-8 lg:mb-0">Artifacts</h1>
           <div className="flex gap-4 mt-8 lg:mt-0">
             <SearchComponent></SearchComponent>
@@ -58,19 +61,25 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
 
         <section className=" px-16 w-full md:2/3 lg:w-2/3 mt-16 flex flex-col md:flex-row items-center gap-16">
           {currentItems.map((artifact) => (
-            <ArtifactCard
+            <div
+              onClick={() => router.push(`/collection/${artifact.id}`)}
               key={artifact.id}
-              title={artifact.attributes.title}
-              power={artifact.attributes.power}
-              type={artifact.attributes.category.data.attributes.image}
-              status={artifact.attributes.artifact_status.data.attributes.title}
             >
-              <img
-                alt={artifact.attributes.path}
-                className="h-full w-full rounded object-cover"
-                src={artifact.attributes.image}
-              />
-            </ArtifactCard>
+              <ArtifactCard
+                title={artifact.attributes.title}
+                power={artifact.attributes.power}
+                type={artifact.attributes.category.data.attributes.image}
+                status={
+                  artifact.attributes.artifact_status.data.attributes.title
+                }
+              >
+                <img
+                  alt={artifact.attributes.path}
+                  className="h-full w-full rounded object-cover"
+                  src={artifact.attributes.image}
+                />
+              </ArtifactCard>
+            </div>
           ))}
         </section>
 
