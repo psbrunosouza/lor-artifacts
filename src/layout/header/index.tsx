@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { Menu } from 'react-feather';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 interface IMenu {
   name: string;
@@ -8,6 +9,7 @@ interface IMenu {
 }
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
 
   const menu: IMenu[] = [
@@ -21,8 +23,12 @@ export default function Header() {
     await router.push('/');
   }
 
+  function handleMenu(): void {
+    setIsMenuOpen(!isMenuOpen);
+  }
+
   return (
-    <header className="backdrop-blur-sm bg-lor-50/30 fixed top-0 left-0 right-0 w-full flex z-40  py-4 justify-center items-center">
+    <header className="backdrop-blur-sm bg-lor-50/30 fixed top-0 left-0 right-0 w-full flex z-40 py-4 justify-center items-center relative">
       <div className="flex justify-between items-center w-[95%] lg:w-2/3">
         <div
           onClick={handleGoToHomePage}
@@ -51,10 +57,31 @@ export default function Header() {
           ))}
         </div>
         <div className="md:hidden">
-          <button>
+          <button onClick={handleMenu}>
             <Menu></Menu>
           </button>
         </div>
+      </div>
+
+      <div
+        className="absolute w-[90%] p-8 overflow-auto h-[240px] rounded-[12px] border bg-lor-100 border-lor-600 top-[102px]"
+        hidden={!isMenuOpen}
+      >
+        <ul>
+          {menu.map((item) => (
+            <li
+              onClick={handleMenu}
+              className={
+                router.pathname === item.path
+                  ? 'flex justify-center items-center text-center text-[18px] bg-lor-600 hover:bg-lor-600/80 rounded-[12px] py-1 '
+                  : 'flex justify-center items-center text-center text-[18px] rounded-[12px] py-1 hover:bg-lor-600'
+              }
+              key={item.name}
+            >
+              <Link href={item.path}>{item.name}</Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </header>
   );

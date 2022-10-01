@@ -8,7 +8,6 @@ import { SearchComponent } from '../../components/search';
 import { ArtifactCard } from '../../components/artifacts-card';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 interface ICollectionPageProps {
   artifacts: IArtifacts[];
@@ -40,7 +39,7 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
       </Head>
 
       <main className="flex justify-center items-center flex-col">
-        <section className="px-16 w-full md:2/3 lg:w-2/3 h-auto p-6 lg:h-[64px] bg-lor-100 mt-28 border-lor-600 border rounded-[12px] flex flex-col lg:flex-row items-center justify-between">
+        <section className="px-16 w-full md:2/3 lg:w-2/3 h-auto p-6 lg:h-[64px] bg-lor-100 lg:mt-16 border-lor-600 border rounded-b-[12px] lg:rounded-[12px] flex flex-col lg:flex-row items-center justify-between">
           <h1 className="text-[32px] mb-8 lg:mb-0">Artifacts</h1>
           <div className="flex gap-4 mt-8 lg:mt-0">
             <SearchComponent></SearchComponent>

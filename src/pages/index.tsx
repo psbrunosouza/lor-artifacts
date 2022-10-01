@@ -301,7 +301,11 @@ export default function Home({
 
 export async function getStaticProps() {
   const { data: categories } = await api('/categories');
-  const { data: classifications } = await api('/artifact-statuses');
+  const { data: classifications } = await api('/artifact-statuses', {
+    params: {
+      populate: '*',
+    },
+  });
   const { data: places } = await api('/places');
   const { data: artifacts } = await api('/artifacts', {
     params: {
