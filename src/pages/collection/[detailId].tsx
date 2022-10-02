@@ -19,7 +19,7 @@ export default function DetailId({ artifact }: IDetailsProps) {
       </Head>
 
       <main className="flex justify-center items-center flex-col">
-        <section className="w-full md:2/3 lg:w-2/3 mt-24 flex items-center justify-center gap-8">
+        <section className="w-full md:2/3 lg:w-2/3 mt-8 flex items-center justify-center gap-8">
           <div className="flex items-center justify-center flex-col">
             <div className="bg-amber-200 w-[64px] h-[64px] md:w-[84px] md:h-[84px] rounded-[50%] mt-12 flex items-center justify-center">
               <span className="font-bold">

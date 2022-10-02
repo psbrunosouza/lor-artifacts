@@ -48,7 +48,9 @@ export default function Header() {
           {menu.map((item) => (
             <div
               className={
-                router.pathname === item.path ? 'border-b-2 border-dashed' : ''
+                router.pathname.includes(item.path)
+                  ? 'text-[18px]  hover:bg-lor-600 bg-lor-600 border border-lor-600 rounded-[12px] py-1 px-2'
+                  : 'text-[18px] bg-lor-100 border border-lor-600 hover:bg-lor-600 rounded-[12px] py-1 px-2 transition ease-in delay-50'
               }
               key={item.name}
             >
@@ -72,9 +74,9 @@ export default function Header() {
             <li
               onClick={handleMenu}
               className={
-                router.pathname === item.path
-                  ? 'flex justify-center items-center text-center text-[18px] bg-lor-600 hover:bg-lor-600/80 rounded-[12px] py-1 '
-                  : 'flex justify-center items-center text-center text-[18px] rounded-[12px] py-1 hover:bg-lor-600'
+                router.pathname.includes(item.path)
+                  ? 'text-[18px]  hover:bg-lor-600 bg-lor-600 border border-lor-600 rounded-[12px] py-1 px-2 flex justify-center'
+                  : 'text-[18px] flex justify-center bg-lor-100 border border-lor-600 hover:bg-lor-600 rounded-[12px] py-1 px-2 transition ease-in delay-50'
               }
               key={item.name}
             >

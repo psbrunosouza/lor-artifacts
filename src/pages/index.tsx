@@ -5,13 +5,12 @@ import { ArtifactCard } from '../components/artifacts-card';
 import { useState } from 'react';
 import { PlaceCard } from '../components/place-card';
 import { useKeenSlider } from 'keen-slider/react';
+import { useRouter } from 'next/router';
 import { IArtifacts } from '../interfaces/IArtifacts';
 import { IClassification } from '../interfaces/IClassification';
 import { ICategories } from '../interfaces/ICategories';
 import { IPlace } from '../interfaces/IPlace';
-import { SwiperSlide } from 'swiper/react';
 import api from '../services/api';
-import { useRouter } from 'next/router';
 
 interface ILoadedProps {
   artifact: boolean;
@@ -174,7 +173,7 @@ export default function Home({
           </p>
           <div
             onClick={handleGoToAnotherPage}
-            className="flex  justify-center pt-8"
+            className="flex justify-center pt-8"
           >
             <Button classes="w-full md:w-auto">Explore</Button>
           </div>
