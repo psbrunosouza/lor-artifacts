@@ -4,13 +4,23 @@ import { Button } from '../components/button';
 import { ArtifactCard } from '../components/artifacts-card';
 import { useState } from 'react';
 import { PlaceCard } from '../components/place-card';
+import { useKeenSlider } from 'keen-slider/react';
 import { IArtifacts } from '../interfaces/IArtifacts';
 import { IClassification } from '../interfaces/IClassification';
 import { ICategories } from '../interfaces/ICategories';
 import { IPlace } from '../interfaces/IPlace';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Keyboard, Navigation, Pagination, Virtual } from 'swiper';
+import { SwiperSlide } from 'swiper/react';
 import api from '../services/api';
+
+interface ILoadedProps {
+  artifact: boolean;
+  classification: boolean;
+}
+
+interface ICurrentSlideProps {
+  artifact: number;
+  classification: number;
+}
 
 interface IHomePageProps {
   categories: ICategories[];
@@ -25,9 +35,117 @@ export default function Home({
   places,
   artifacts,
 }: IHomePageProps) {
+  const [currentSlide, setCurrentSlide] = useState<ICurrentSlideProps>({
+    artifact: 0,
+    classification: 0,
+  });
+  const [loaded, setLoaded] = useState<ILoadedProps>({
+    artifact: false,
+    classification: false,
+  });
+
   const [classificationDescription, setClassificationDescription] = useState(
     classifications[0].attributes.description
   );
+
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
+    {
+      slideChanged(slider) {
+        setCurrentSlide({
+          ...currentSlide,
+          artifact: slider.track.details.rel,
+        });
+      },
+      created() {
+        setLoaded({ ...loaded, artifact: true });
+      },
+      initial: 0,
+      breakpoints: {
+        '(min-width: 640px)': {
+          loop: false,
+          slides: {
+            perView: 1,
+            spacing: 15,
+          },
+        },
+
+        '(min-width: 768px)': {
+          loop: false,
+          slides: {
+            perView: 1,
+            spacing: 15,
+          },
+        },
+
+        '(min-width: 1024px)': {
+          loop: false,
+          slides: {
+            perView: 2,
+            spacing: 15,
+          },
+        },
+
+        '(min-width: 1536px)': {
+          loop: false,
+          slides: {
+            perView: 3,
+            spacing: 15,
+          },
+        },
+      },
+    },
+    []
+  );
+
+  const [sliderClassificationRef, instanceClassificationRef] =
+    useKeenSlider<HTMLDivElement>(
+      {
+        slideChanged(slider) {
+          setCurrentSlide({
+            ...currentSlide,
+            classification: slider.track.details.rel,
+          });
+        },
+        created() {
+          setLoaded({ ...loaded, classification: true });
+        },
+        initial: 0,
+        breakpoints: {
+          '(min-width: 640px)': {
+            loop: false,
+            slides: {
+              perView: 1,
+              spacing: 15,
+            },
+          },
+
+          '(min-width: 768px)': {
+            loop: false,
+            slides: {
+              perView: 1,
+              spacing: 15,
+            },
+          },
+
+          '(min-width: 1024px)': {
+            loop: false,
+            slides: {
+              perView: 2,
+              spacing: 15,
+            },
+          },
+
+          '(min-width: 1536px)': {
+            loop: false,
+            slides: {
+              perView: 3,
+              spacing: 15,
+            },
+          },
+        },
+      },
+      []
+    );
 
   return (
     <Layout>
@@ -47,44 +165,15 @@ export default function Home({
             power. Its features, skills, bearers, story and introduce a timeline
             to tell more about its paths over the middle earth.
           </p>
-          <div className="flex justify-center pt-8">
+          <div className="flex  justify-center pt-8">
             <Button classes="w-full md:w-auto">Explore</Button>
           </div>
-          <div className="flex justify-center mt-16">
-            <Swiper
-              className="w-full"
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              slidesPerView={4}
-              breakpoints={{
-                '640': {
-                  slidesPerView: 1,
-                },
-                '768': {
-                  slidesPerView: 1,
-                },
-                '1024': {
-                  slidesPerView: 2,
-                  spaceBetween: 10,
-                },
-                '1536': {
-                  slidesPerView: 3,
-                  spaceBetween: 10,
-                },
-              }}
-              modules={[Pagination, Navigation, Virtual, Keyboard, Autoplay]}
-              keyboard={{
-                enabled: true,
-              }}
-              navigation={true}
-              virtual={true}
-            >
-              {artifacts.map((artifact, index) => (
-                <SwiperSlide
-                  className="w-full p-6 flex justify-center items-center"
-                  virtualIndex={index}
+
+          <div className="navigation-wrapper">
+            <div ref={sliderRef} className="keen-slider">
+              {artifacts.map((artifact) => (
+                <div
+                  className="keen-slider__slide flex p-8 justify-center"
                   key={artifact.id}
                 >
                   <ArtifactCard
@@ -97,13 +186,34 @@ export default function Home({
                   >
                     <img
                       alt={artifact.attributes.path}
-                      className="h-[320px] w-full rounded object-cover"
+                      className="h-full w-full rounded object-cover"
                       src={artifact.attributes.image}
                     />
                   </ArtifactCard>
-                </SwiperSlide>
+                </div>
               ))}
-            </Swiper>
+              {loaded.artifact && instanceRef.current && (
+                <>
+                  <Arrow
+                    left
+                    onClick={(e: any) =>
+                      e.stopPropagation() || instanceRef.current?.prev()
+                    }
+                    disabled={currentSlide.artifact === 0}
+                  />
+
+                  <Arrow
+                    onClick={(e: any) =>
+                      e.stopPropagation() || instanceRef.current?.next()
+                    }
+                    disabled={
+                      currentSlide.artifact ===
+                      instanceRef.current.track.details.slides.length - 1
+                    }
+                  />
+                </>
+              )}
+            </div>
           </div>
         </section>
 
@@ -118,50 +228,17 @@ export default function Home({
               </h3>
 
               <div className="pt-8 ">
-                <Swiper
-                  breakpoints={{
-                    '640': {
-                      slidesPerView: 1,
-                    },
-                    '768': {
-                      slidesPerView: 1,
-                    },
-                    '1024': {
-                      slidesPerView: 2,
-                      spaceBetween: 10,
-                    },
-                    '1536': {
-                      slidesPerView: 3,
-                      spaceBetween: 10,
-                    },
-                  }}
-                  centeredSlides={false}
-                  modules={[
-                    Pagination,
-                    Navigation,
-                    Virtual,
-                    Keyboard,
-                    Autoplay,
-                  ]}
-                  keyboard={{
-                    enabled: true,
-                  }}
-                  navigation={true}
-                  virtual={true}
-                >
-                  {classifications.map((classification, index) => (
-                    <SwiperSlide
-                      className="w-full flex justify-center"
-                      virtualIndex={index}
-                      key={classification.id}
-                    >
+                <div className="navigation-wrapper">
+                  <div ref={sliderClassificationRef} className="keen-slider">
+                    {classifications.map((classification) => (
                       <div
+                        key={classification.id}
                         onClick={() =>
                           setClassificationDescription(
                             classification.attributes.description
                           )
                         }
-                        className="h-[160px] w-[160px] bg-white relative cursor-pointer"
+                        className="h-[160px] w-[160px] keen-slider__slide bg-white relative cursor-pointer"
                         style={{
                           backgroundColor: classification.attributes.color,
                           clipPath:
@@ -195,9 +272,35 @@ export default function Home({
                           </span>
                         </div>
                       </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+                    ))}
+                    {loaded.classification &&
+                      instanceClassificationRef.current && (
+                        <>
+                          <Arrow
+                            left
+                            onClick={(e: any) =>
+                              e.stopPropagation() ||
+                              instanceClassificationRef.current?.prev()
+                            }
+                            disabled={currentSlide.classification === 0}
+                          />
+
+                          <Arrow
+                            onClick={(e: any) =>
+                              e.stopPropagation() ||
+                              instanceClassificationRef.current?.next()
+                            }
+                            disabled={
+                              currentSlide.classification ===
+                              instanceClassificationRef.current.track.details
+                                .slides.length -
+                                1
+                            }
+                          />
+                        </>
+                      )}
+                  </div>
+                </div>
               </div>
 
               <p className="pt-8 text-center md:text-left">
@@ -321,4 +424,25 @@ export async function getStaticProps() {
       artifacts: artifacts.data,
     },
   };
+}
+
+function Arrow(props: any) {
+  const disabled = props.disabled ? ' arrow--disabled' : '';
+  return (
+    <svg
+      onClick={props.onClick}
+      className={`arrow ${
+        props.left ? 'arrow--left' : 'arrow--right'
+      } ${disabled}`}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
+      {props.left && (
+        <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
+      )}
+      {!props.left && (
+        <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
+      )}
+    </svg>
+  );
 }

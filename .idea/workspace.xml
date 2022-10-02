@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1002f0cb-a004-4eb7-ad43-2e393a7fed50" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/styles/slider.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/header/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_document.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/collection/[details].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/collection/[detailId].tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/collection/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/collection/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/banner/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/banner/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +119,7 @@
       <workItem from="1664533710236" duration="2831000" />
       <workItem from="1664542324640" duration="1652000" />
       <workItem from="1664570497581" duration="6414000" />
-      <workItem from="1664639702919" duration="1765000" />
+      <workItem from="1664639702919" duration="16893000" />
     </task>
     <servers />
   </component>
