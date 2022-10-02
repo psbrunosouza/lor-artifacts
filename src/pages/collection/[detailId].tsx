@@ -70,12 +70,7 @@ export default function DetailId({ artifact }: IDetailsProps) {
 
         <section className="w-5/6 md:w-[620px] min-h-[140px] my-16 flex items-center justify-center  flex-col p-4 gap-8 bg-lor-100 border-lor-600 border rounded-[12px] overflow-auto">
           <h1 className="text-[26px]">{artifact.attributes.title}</h1>
-          <p className="text-center">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad alias
-            aliquam dicta dignissimos doloribus et facere inventore, libero
-            nulla porro recusandae, rerum sunt...
-          </p>
-          <Button>See more</Button>
+          <p className="text-center">{artifact.attributes.description}</p>
         </section>
       </main>
     </Layout>

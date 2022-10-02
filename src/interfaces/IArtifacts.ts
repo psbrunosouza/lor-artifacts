@@ -9,6 +9,7 @@ export interface IArtifacts extends IDefault {
     image: string;
     power: number;
     title: string;
+    description: string;
     artifact_status: { data: IClassification };
     category: { data: ICategories };
     place: { data: IPlace };
