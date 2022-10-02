@@ -9,7 +9,7 @@
   top: 50%;
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
-  @apply fill-lor-200;
+  @apply fill-lor-300;
   cursor: pointer;
 }
 
@@ -23,5 +23,5 @@
 }
 
 .arrow--disabled {
-  @apply fill-lor-200/50;
+  @apply fill-gray-400/50;
 }

@@ -11,6 +11,7 @@ import { ICategories } from '../interfaces/ICategories';
 import { IPlace } from '../interfaces/IPlace';
 import { SwiperSlide } from 'swiper/react';
 import api from '../services/api';
+import { useRouter } from 'next/router';
 
 interface ILoadedProps {
   artifact: boolean;
@@ -35,6 +36,8 @@ export default function Home({
   places,
   artifacts,
 }: IHomePageProps) {
+  const router = useRouter();
+
   const [currentSlide, setCurrentSlide] = useState<ICurrentSlideProps>({
     artifact: 0,
     classification: 0,
@@ -47,6 +50,10 @@ export default function Home({
   const [classificationDescription, setClassificationDescription] = useState(
     classifications[0].attributes.description
   );
+
+  async function handleGoToAnotherPage(): Promise<void> {
+    await router.push('/collection');
+  }
 
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
     {
@@ -165,7 +172,10 @@ export default function Home({
             power. Its features, skills, bearers, story and introduce a timeline
             to tell more about its paths over the middle earth.
           </p>
-          <div className="flex  justify-center pt-8">
+          <div
+            onClick={handleGoToAnotherPage}
+            className="flex  justify-center pt-8"
+          >
             <Button classes="w-full md:w-auto">Explore</Button>
           </div>
 
@@ -238,11 +248,11 @@ export default function Home({
                             classification.attributes.description
                           )
                         }
-                        className="h-[160px] w-[160px] keen-slider__slide bg-white relative cursor-pointer"
+                        className="h-[160px] max-w-[160px] keen-slider__slide bg-white relative cursor-pointer"
                         style={{
                           backgroundColor: classification.attributes.color,
                           clipPath:
-                            'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
+                            'polygon(33% 0%, 68% 0%, 85% 50%, 68% 100%, 33% 100%, 15% 50%)',
                         }}
                       >
                         <div
@@ -258,7 +268,7 @@ export default function Home({
                           flex"
                           style={{
                             clipPath:
-                              'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
+                              'polygon(33% 0%, 68% 0%, 85% 50%, 68% 100%, 33% 100%, 15% 50%)',
                           }}
                         >
                           <img
