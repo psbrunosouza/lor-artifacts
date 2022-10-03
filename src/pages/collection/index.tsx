@@ -98,6 +98,7 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
         <section className=" px-16 w-full md:2/3 lg:w-2/3 mt-16 flex flex-col md:flex-row items-center gap-16">
           {currentItems.map((artifact) => (
             <div
+              className="cursor-pointer"
               onClick={() => router.push(`/collection/${artifact.id}`)}
               key={artifact.id}
             >

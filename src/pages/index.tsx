@@ -50,8 +50,8 @@ export default function Home({
     classifications.length && classifications[0].attributes.description
   );
 
-  async function handleGoToAnotherPage(): Promise<void> {
-    await router.push('/collection');
+  async function handleGoToAnotherPage(param?: string): Promise<void> {
+    await router.push(param ? `/collection/${param}` : '/collection');
   }
 
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
@@ -172,7 +172,7 @@ export default function Home({
             to tell more about its paths over the middle earth.
           </p>
           <div
-            onClick={handleGoToAnotherPage}
+            onClick={() => handleGoToAnotherPage()}
             className="flex justify-center pt-8"
           >
             <Button classes="w-full md:w-auto">Explore</Button>
@@ -182,7 +182,8 @@ export default function Home({
             <div ref={sliderRef} className="keen-slider">
               {artifacts.map((artifact) => (
                 <div
-                  className="keen-slider__slide flex p-8 justify-center"
+                  onClick={() => handleGoToAnotherPage(String(artifact.id))}
+                  className="keen-slider__slide flex p-8 justify-center cursor-pointer"
                   key={artifact.id}
                 >
                   <ArtifactCard
