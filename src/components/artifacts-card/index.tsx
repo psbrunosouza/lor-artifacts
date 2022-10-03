@@ -30,14 +30,14 @@ export function ArtifactCard({
     >
       {image ? (
         <img
-          alt={image}
+          alt=""
           className="h-full w-full rounded-[12px] object-cover"
           src={image}
         />
       ) : (
         <div className="flex flex-col justify-center items-center">
           <img
-            alt={image}
+            alt=""
             className="h-[80px] w-[80px] rounded-[12px] object-cover"
             src="/assets/icons/no-data-found.svg"
           />

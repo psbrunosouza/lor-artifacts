@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Button } from '../../components/button';
+import { motion } from 'framer-motion';
 
 export default function Banner() {
   const ringImageRef = useRef<HTMLImageElement>(null);
@@ -18,15 +18,32 @@ export default function Banner() {
   return (
     <div className="bg-cover flex px-8 items-center justify-center object-contain h-screen w-full md:gap-64">
       <div className="flex justify-center md:justify-center text-center md:text-start flex-col ">
-        <h2 className="leading-tight">Tolkien Universe</h2>
-        <h1 className="bg-clip-text bg-gradient-to-l text-transparent from-lor-300 via-lor-400 to-lor-500 leading-tight">
+        <motion.h2
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="leading-tight"
+        >
+          Tolkien Universe
+        </motion.h2>
+        <motion.h1
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="bg-clip-text bg-gradient-to-l text-transparent from-lor-300 via-lor-400 to-lor-500 leading-tight"
+        >
           Artifacts
-        </h1>
-        <span className="mt-6 md:w-[420px]">
+        </motion.h1>
+        <motion.span
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mt-6 md:w-[420px]"
+        >
           A place to learn more about artifacts founded in the Tolkien universe.
           We will introduce you in this magical adventure through the powerful,
           lovely and beautiful artifacts writed by Tolkien.
-        </span>
+        </motion.span>
       </div>
 
       <div className="hidden lg:block">

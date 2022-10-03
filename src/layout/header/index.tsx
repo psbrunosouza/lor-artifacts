@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Menu } from 'react-feather';
+import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import './Index.module.scss';
@@ -40,7 +41,12 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="backdrop-blur-sm bg-lor-50/30 fixed top-0 left-0 right-0 w-full flex z-40 py-4 justify-center items-center">
+    <motion.header
+      initial={{ opacity: 0, y: -100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="backdrop-blur-sm bg-lor-50/30 fixed top-0 left-0 right-0 w-full flex z-40 py-4 justify-center items-center"
+    >
       <div className="flex justify-between items-center w-[95%] lg:w-2/3">
         <div
           onClick={handleGoToHomePage}
@@ -100,6 +106,6 @@ export default function Header() {
           ))}
         </ul>
       </div>
-    </header>
+    </motion.header>
   );
 }

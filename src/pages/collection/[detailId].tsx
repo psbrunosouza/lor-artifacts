@@ -1,5 +1,6 @@
 import Layout from '../../layout';
 import Head from 'next/head';
+import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'react-feather';
 import { Button } from '../../components/button';
 import api from '../../services/api';
@@ -19,8 +20,13 @@ export default function DetailId({ artifact }: IDetailsProps) {
       </Head>
 
       <main className="flex justify-center items-center flex-col">
-        <section className="w-full md:2/3 lg:w-2/3 mt-8 flex items-center justify-center gap-8">
-          <div className="flex items-center justify-center flex-col">
+        <section className="w-full md:2/3 lg:w-2/3 mt-24 flex items-center justify-center gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: -100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex items-center justify-center flex-col"
+          >
             <div
               style={{
                 borderColor:
@@ -40,9 +46,14 @@ export default function DetailId({ artifact }: IDetailsProps) {
             <span className="font-bold leading-6">
               {artifact.attributes.category.data.attributes.title}
             </span>
-          </div>
+          </motion.div>
 
-          <div className="flex items-center justify-center flex-col">
+          <motion.div
+            initial={{ opacity: 0, y: -100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex items-center justify-center flex-col"
+          >
             <div
               style={{
                 backgroundColor:
@@ -53,9 +64,14 @@ export default function DetailId({ artifact }: IDetailsProps) {
               <span className="font-bold">{artifact.attributes.power}</span>
             </div>
             <span className="font-bold leading-6">Power</span>
-          </div>
+          </motion.div>
 
-          <div className="flex items-center justify-center flex-col">
+          <motion.div
+            initial={{ opacity: 0, y: -100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex items-center justify-center flex-col"
+          >
             <div
               style={{
                 borderColor:
@@ -75,10 +91,15 @@ export default function DetailId({ artifact }: IDetailsProps) {
             <span className="font-bold leading-6">
               {artifact.attributes.artifact_status.data.attributes.title}
             </span>
-          </div>
+          </motion.div>
         </section>
 
-        <section className="w-full md:2/3 lg:w-2/3 mt-8 flex items-center justify-center gap-8">
+        <motion.section
+          initial={{ opacity: 0, y: -100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="w-full md:2/3 lg:w-2/3 mt-8 flex items-center justify-center gap-8"
+        >
           <div className="w-[280px] h-[380px] md:w-[520px] flex items-center justify-center border border-lor-600 rounded-[12px]">
             {artifact.attributes.image ? (
               <img
@@ -97,9 +118,12 @@ export default function DetailId({ artifact }: IDetailsProps) {
               </div>
             )}
           </div>
-        </section>
+        </motion.section>
 
-        <section
+        <motion.section
+          initial={{ opacity: 0, y: -100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           style={{
             display: !artifact.attributes.title.length ? 'none' : 'flex',
           }}
@@ -111,7 +135,7 @@ export default function DetailId({ artifact }: IDetailsProps) {
               ? artifact.attributes.description
               : 'This artifact explanation is under construction, then go there and back again to see a new description...'}
           </p>
-        </section>
+        </motion.section>
       </main>
     </Layout>
   );
