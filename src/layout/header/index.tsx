@@ -40,7 +40,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="backdrop-blur-sm bg-lor-50/30 fixed top-0 left-0 right-0 w-full flex z-40 py-4 justify-center items-center relative">
+    <header className="backdrop-blur-sm bg-lor-50/30 fixed top-0 left-0 right-0 w-full flex z-40 py-4 justify-center items-center">
       <div className="flex justify-between items-center w-[95%] lg:w-2/3">
         <div
           onClick={handleGoToHomePage}

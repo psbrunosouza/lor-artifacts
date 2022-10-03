@@ -268,7 +268,7 @@ export default function Home({
                           }}
                         >
                           <img
-                            src={classification.attributes.image}
+                            src="/assets/icons/type.svg"
                             height="42px"
                             alt={classification.attributes.title}
                             width="42px"
