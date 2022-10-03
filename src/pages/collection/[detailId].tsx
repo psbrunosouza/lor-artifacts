@@ -21,7 +21,13 @@ export default function DetailId({ artifact }: IDetailsProps) {
       <main className="flex justify-center items-center flex-col">
         <section className="w-full md:2/3 lg:w-2/3 mt-8 flex items-center justify-center gap-8">
           <div className="flex items-center justify-center flex-col">
-            <div className="bg-amber-200 w-[64px] h-[64px] md:w-[84px] md:h-[84px] rounded-[50%] mt-12 flex items-center justify-center">
+            <div
+              style={{
+                borderColor:
+                  artifact.attributes.artifact_status.data.attributes.color,
+              }}
+              className="border-2 w-[64px] h-[64px] md:w-[84px] md:h-[84px] rounded-[50%] mt-12 flex items-center justify-center"
+            >
               <span className="font-bold">
                 <img
                   width="32px"
@@ -31,44 +37,80 @@ export default function DetailId({ artifact }: IDetailsProps) {
                 />
               </span>
             </div>
-            <span className="font-bold leading-6">Category</span>
+            <span className="font-bold leading-6">
+              {artifact.attributes.category.data.attributes.title}
+            </span>
           </div>
 
           <div className="flex items-center justify-center flex-col">
-            <div className="bg-amber-200 w-[64px] h-[64px] md:w-[84px] md:h-[84px] rounded-[50%] flex items-center justify-center">
+            <div
+              style={{
+                backgroundColor:
+                  artifact.attributes.artifact_status.data.attributes.color,
+              }}
+              className={`w-[64px] h-[64px] md:w-[84px] md:h-[84px] rounded-[50%] flex items-center justify-center `}
+            >
               <span className="font-bold">{artifact.attributes.power}</span>
             </div>
             <span className="font-bold leading-6">Power</span>
           </div>
 
           <div className="flex items-center justify-center flex-col">
-            <div className="bg-amber-200 w-[64px] h-[64px] md:w-[84px] md:h-[84px] rounded-[50%] mt-12 flex items-center justify-center">
+            <div
+              style={{
+                borderColor:
+                  artifact.attributes.artifact_status.data.attributes.color,
+              }}
+              className="border-2 w-[64px] h-[64px] md:w-[84px] md:h-[84px] rounded-[50%] mt-12 flex items-center justify-center"
+            >
               <span className="font-bold ">
                 <img
                   width="32px"
                   height="32px"
-                  src={artifact.attributes.category.data.attributes.image}
+                  src="/assets/icons/type.svg"
                   alt=""
                 />
               </span>
             </div>
-            <span className="font-bold leading-6">Type</span>
+            <span className="font-bold leading-6">
+              {artifact.attributes.artifact_status.data.attributes.title}
+            </span>
           </div>
         </section>
 
-        <section className="w-full md:2/3 lg:w-2/3 mt-16 flex items-center justify-center gap-8">
-          <div className="w-[220px] h-[220px] md:w-[380px] md:h-[380px] lg:w-[480px] lg:h-[480px]">
-            <img
-              src={artifact.attributes.image}
-              alt=""
-              className="w-full h-full object-cover"
-            />
+        <section className="w-full md:2/3 lg:w-2/3 mt-8 flex items-center justify-center gap-8">
+          <div className="w-[280px] h-[380px] md:w-[520px] flex items-center justify-center border border-lor-600 rounded-[12px]">
+            {artifact.attributes.image ? (
+              <img
+                src={artifact.attributes.image}
+                alt=""
+                className="w-full h-full object-cover rounded-[12px]"
+              />
+            ) : (
+              <div className="flex flex-col justify-center items-center">
+                <img
+                  alt="not-found"
+                  className="h-[80px] w-[80px] rounded-[12px] object-cover"
+                  src="/assets/icons/no-data-found.svg"
+                />
+                <span className="text-gray-400 leading-8">Image not found</span>
+              </div>
+            )}
           </div>
         </section>
 
-        <section className="w-5/6 md:w-[620px] min-h-[140px] my-16 flex items-center justify-center  flex-col p-4 gap-8 bg-lor-100 border-lor-600 border rounded-[12px] overflow-auto">
+        <section
+          style={{
+            display: !artifact.attributes.title.length ? 'none' : 'flex',
+          }}
+          className="w-[280px] md:w-[520px] min-h-[140px] my-8 flex items-center justify-center flex-col p-4 gap-8 bg-lor-100 border-lor-600 border rounded-[12px] overflow-auto"
+        >
           <h1 className="text-[26px]">{artifact.attributes.title}</h1>
-          <p className="text-center">{artifact.attributes.description}</p>
+          <p className="text-center">
+            {artifact.attributes.description
+              ? artifact.attributes.description
+              : 'This artifact explanation is under construction, then go there and back again to see a new description...'}
+          </p>
         </section>
       </main>
     </Layout>

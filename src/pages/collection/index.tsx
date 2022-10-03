@@ -102,19 +102,14 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
               key={artifact.id}
             >
               <ArtifactCard
+                image={artifact.attributes.image}
                 title={artifact.attributes.title}
                 power={artifact.attributes.power}
                 type={artifact.attributes.category.data.attributes.image}
                 status={
                   artifact.attributes.artifact_status.data.attributes.title
                 }
-              >
-                <img
-                  alt={artifact.attributes.path}
-                  className="h-full w-full rounded object-cover"
-                  src={artifact.attributes.image}
-                />
-              </ArtifactCard>
+              ></ArtifactCard>
             </div>
           ))}
         </section>

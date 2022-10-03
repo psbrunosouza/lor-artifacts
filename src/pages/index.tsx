@@ -186,6 +186,7 @@ export default function Home({
                   key={artifact.id}
                 >
                   <ArtifactCard
+                    image={artifact.attributes.image}
                     title={artifact.attributes.title}
                     power={artifact.attributes.power}
                     type={artifact.attributes?.category.data?.attributes.image}
@@ -193,13 +194,7 @@ export default function Home({
                       artifact.attributes?.artifact_status.data?.attributes
                         .title
                     }
-                  >
-                    <img
-                      alt={artifact.attributes.path}
-                      className="h-full w-full rounded object-cover"
-                      src={artifact.attributes.image}
-                    />
-                  </ArtifactCard>
+                  ></ArtifactCard>
                 </div>
               ))}
               {loaded.artifact && instanceRef.current && (
@@ -333,16 +328,40 @@ export default function Home({
                 characteristics described via some item.
               </p>
 
-              <div className="pt-8 flex items-center justify-center gap-16">
-                {/*<div>*/}
-                {/*  <PlaceCard title={places[0].attributes.title}>*/}
-                {/*    <img*/}
-                {/*      src={places[0].attributes.image}*/}
-                {/*      alt={places[0].attributes.title}*/}
-                {/*      className="object-cover rounded-[8px] w-full h-full"*/}
-                {/*    />*/}
-                {/*  </PlaceCard>*/}
-                {/*</div>*/}
+              <div
+                style={{
+                  display:
+                    places[0] && places[1] && places[3] ? 'flex' : 'none',
+                }}
+                className="pt-8 flex items-center justify-center gap-16"
+              >
+                <div>
+                  <PlaceCard title={places[0].attributes.title}>
+                    <img
+                      src={places[0].attributes.image}
+                      alt={places[0].attributes.title}
+                      className="object-cover rounded-[8px] w-full h-full"
+                    />
+                  </PlaceCard>
+                </div>
+                <div className="hidden md:flex ">
+                  <PlaceCard title={places[1].attributes.title}>
+                    <img
+                      src={places[1].attributes.image}
+                      alt={places[1].attributes.title}
+                      className="object-cover rounded-[8px] w-full h-full"
+                    />
+                  </PlaceCard>
+                </div>
+                <div className="hidden lg:flex ">
+                  <PlaceCard title={places[2].attributes.title}>
+                    <img
+                      src={places[2].attributes.image}
+                      alt={places[2].attributes.title}
+                      className="object-cover rounded-[8px] w-full h-full"
+                    />
+                  </PlaceCard>
+                </div>
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Menu } from 'react-feather';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import './Index.module.scss';
 
 interface IMenu {
   name: string;
@@ -75,12 +76,14 @@ export default function Header() {
               onClick={handleMenu}
               className={
                 router.pathname.includes(item.path)
-                  ? 'text-[18px]  hover:bg-lor-600 bg-lor-600 border border-lor-600 rounded-[12px] py-1 px-2 flex justify-center'
-                  : 'text-[18px] flex justify-center bg-lor-100 border border-lor-600 hover:bg-lor-600 rounded-[12px] py-1 px-2 transition ease-in delay-50'
+                  ? 'text-[18px]  hover:bg-lor-600 bg-lor-600 border border-lor-600 rounded-[12px] py-1 px-2 flex justify-center menu'
+                  : 'text-[18px] flex justify-center bg-lor-100 border border-lor-600 hover:bg-lor-600 rounded-[12px] py-1 px-2 transition ease-in delay-50 menu'
               }
               key={item.name}
             >
-              <Link href={item.path}>{item.name}</Link>
+              <Link href={item.path} passHref>
+                <a className="w-full text-center">{item.name}</a>
+              </Link>
             </li>
           ))}
         </ul>
