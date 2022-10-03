@@ -2,14 +2,4 @@ body {
   @apply bg-lor-50;
   @apply text-white;
   @apply overflow-x-hidden;
-
-  ::-moz-selection {
-    color: #fff;
-    background: #512c8b;
-  }
-
-  ::selection {
-    color: #fff;
-    background: #512c8b;
-  }
 }

@@ -57,7 +57,6 @@ export default function DetailId({ artifact }: IDetailsProps) {
         </section>
 
         <section className="w-full md:2/3 lg:w-2/3 mt-16 flex items-center justify-center gap-8">
-          <ArrowLeft></ArrowLeft>
           <div className="w-[220px] h-[220px] md:w-[380px] md:h-[380px] lg:w-[480px] lg:h-[480px]">
             <img
               src={artifact.attributes.image}
@@ -65,7 +64,6 @@ export default function DetailId({ artifact }: IDetailsProps) {
               className="w-full h-full object-cover"
             />
           </div>
-          <ArrowRight></ArrowRight>
         </section>
 
         <section className="w-5/6 md:w-[620px] min-h-[140px] my-16 flex items-center justify-center  flex-col p-4 gap-8 bg-lor-100 border-lor-600 border rounded-[12px] overflow-auto">
