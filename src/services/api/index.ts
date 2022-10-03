@@ -6,7 +6,7 @@ import { errorInterceptor } from './interceptors/ErrorInterceptor';
 const api = axios.create({
   baseURL: process.env.BASE_URL,
   headers: {
-    Authorization: `bearer ${process.env.TOKEN}`,
+    Authorization: `bearer ${process.env.STRAPI_AUTHORIZATION_TOKEN}`,
     Accept: 'application/json',
   },
   timeout: 5000,
