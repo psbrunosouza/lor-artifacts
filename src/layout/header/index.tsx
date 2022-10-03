@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Menu } from 'react-feather';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Index.module.scss';
 
 interface IMenu {
@@ -11,6 +11,7 @@ interface IMenu {
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const ref = useRef<any>(null);
   const router = useRouter();
 
   const menu: IMenu[] = [
@@ -27,6 +28,16 @@ export default function Header() {
   function handleMenu(): void {
     setIsMenuOpen(!isMenuOpen);
   }
+
+  function handleClickOutside(event: any) {
+    if (isMenuOpen && ref.current && !ref.current.contains(event.target)) {
+      setIsMenuOpen(!isMenuOpen);
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <header className="backdrop-blur-sm bg-lor-50/30 fixed top-0 left-0 right-0 w-full flex z-40 py-4 justify-center items-center relative">
@@ -74,6 +85,7 @@ export default function Header() {
           {menu.map((item) => (
             <li
               onClick={handleMenu}
+              ref={ref}
               className={
                 router.pathname.includes(item.path)
                   ? 'text-[18px]  hover:bg-lor-600 bg-lor-600 border border-lor-600 rounded-[12px] py-1 px-2 flex justify-center menu'
