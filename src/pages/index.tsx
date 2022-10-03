@@ -47,7 +47,7 @@ export default function Home({
   });
 
   const [classificationDescription, setClassificationDescription] = useState(
-    classifications[0].attributes.description
+    classifications.length && classifications[0].attributes.description
   );
 
   async function handleGoToAnotherPage(): Promise<void> {
@@ -188,9 +188,10 @@ export default function Home({
                   <ArtifactCard
                     title={artifact.attributes.title}
                     power={artifact.attributes.power}
-                    type={artifact.attributes.category.data?.attributes.image}
+                    type={artifact.attributes?.category.data?.attributes.image}
                     status={
-                      artifact.attributes.artifact_status.data?.attributes.title
+                      artifact.attributes?.artifact_status.data?.attributes
+                        .title
                     }
                   >
                     <img
@@ -333,33 +334,15 @@ export default function Home({
               </p>
 
               <div className="pt-8 flex items-center justify-center gap-16">
-                <div>
-                  <PlaceCard title={places[0].attributes.title}>
-                    <img
-                      src={places[0].attributes.image}
-                      alt={places[0].attributes.title}
-                      className="object-cover rounded-[8px] w-full h-full"
-                    />
-                  </PlaceCard>
-                </div>
-                <div className="hidden md:flex ">
-                  <PlaceCard title={places[1].attributes.title}>
-                    <img
-                      src={places[1].attributes.image}
-                      alt={places[1].attributes.title}
-                      className="object-cover rounded-[8px] w-full h-full"
-                    />
-                  </PlaceCard>
-                </div>
-                <div className="hidden lg:flex ">
-                  <PlaceCard title={places[2].attributes.title}>
-                    <img
-                      src={places[2].attributes.image}
-                      alt={places[2].attributes.title}
-                      className="object-cover rounded-[8px] w-full h-full"
-                    />
-                  </PlaceCard>
-                </div>
+                {/*<div>*/}
+                {/*  <PlaceCard title={places[0].attributes.title}>*/}
+                {/*    <img*/}
+                {/*      src={places[0].attributes.image}*/}
+                {/*      alt={places[0].attributes.title}*/}
+                {/*      className="object-cover rounded-[8px] w-full h-full"*/}
+                {/*    />*/}
+                {/*  </PlaceCard>*/}
+                {/*</div>*/}
               </div>
             </div>
           </div>
