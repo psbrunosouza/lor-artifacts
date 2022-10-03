@@ -82,13 +82,13 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
             ></SearchComponent>
             <button
               type="button"
-              className="h-[42px] w-[42px] bg-lor-600 rounded-[12px] hover:bg-lor-600/80 transition ease-in-out delay-50 flex items-center justify-center "
+              className="h-[42px] hidden w-[42px] bg-lor-600 rounded-[12px] hover:bg-lor-600/80 transition ease-in-out delay-50 flex items-center justify-center "
             >
               <Grid></Grid>
             </button>
             <button
               type="button"
-              className="h-[42px] w-[42px] bg-lor-600 rounded-[12px] hover:bg-lor-600/80 transition ease-in-out delay-50 flex items-center justify-center"
+              className="h-[42px] hidden w-[42px] bg-lor-600 rounded-[12px] hover:bg-lor-600/80 transition ease-in-out delay-50 flex items-center justify-center"
             >
               <Book></Book>
             </button>
