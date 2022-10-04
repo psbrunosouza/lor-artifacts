@@ -20,6 +20,7 @@ export default function Banner() {
       <div className="flex justify-center md:justify-center text-center md:text-start flex-col ">
         <motion.h2
           initial={{ opacity: 0, x: -100 }}
+          viewport={{ once: true }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className="leading-tight"
@@ -28,6 +29,7 @@ export default function Banner() {
         </motion.h2>
         <motion.h1
           initial={{ opacity: 0, x: -100 }}
+          viewport={{ once: true }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className="bg-clip-text bg-gradient-to-l text-transparent from-lor-300 via-lor-400 to-lor-500 leading-tight"
@@ -36,6 +38,7 @@ export default function Banner() {
         </motion.h1>
         <motion.span
           initial={{ opacity: 0, x: -100 }}
+          viewport={{ once: true }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className="mt-6 md:w-[420px]"

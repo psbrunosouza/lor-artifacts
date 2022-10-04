@@ -43,6 +43,7 @@ export default function Header() {
   return (
     <motion.header
       initial={{ opacity: 0, y: -100 }}
+      viewport={{ once: true }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       className="backdrop-blur-sm bg-lor-50/30 fixed top-0 left-0 right-0 w-full flex z-40 py-4 justify-center items-center"
@@ -83,7 +84,9 @@ export default function Header() {
         </div>
       </div>
 
-      <div
+      <motion.div
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
         className="absolute w-[90%] p-8 overflow-auto h-[240px] rounded-[12px] border bg-lor-100 border-lor-600 top-[102px]"
         hidden={!isMenuOpen}
       >
@@ -105,7 +108,7 @@ export default function Header() {
             </li>
           ))}
         </ul>
-      </div>
+      </motion.div>
     </motion.header>
   );
 }

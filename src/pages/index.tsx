@@ -164,6 +164,7 @@ export default function Home({
       <main>
         <motion.section
           initial={{ opacity: 0, y: -100 }}
+          viewport={{ once: true }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="w-full md:w-1/2 m-auto flex flex-col justify-center py-16 px-8"
@@ -237,6 +238,7 @@ export default function Home({
             <div className="w-full md:w-1/2  m-auto flex flex-col justify-center py-16 px-8">
               <motion.h3
                 initial={{ opacity: 0, y: -100 }}
+                viewport={{ once: true }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 className="text-center  bg-clip-text bg-gradient-to-l text-transparent from-lor-300 via-lor-400 to-lor-500 leading-snug"
@@ -246,6 +248,7 @@ export default function Home({
 
               <motion.div
                 initial={{ opacity: 0, y: -100 }}
+                viewport={{ once: true }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 className="pt-8 "
@@ -327,6 +330,7 @@ export default function Home({
 
               <motion.p
                 initial={{ opacity: 0, y: -100 }}
+                viewport={{ once: true }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 className="pt-8 text-center"
@@ -342,6 +346,7 @@ export default function Home({
             <div className="w-full md:w-1/2  m-auto flex flex-col justify-center py-16 px-8">
               <motion.h3
                 initial={{ opacity: 0, y: -100 }}
+                viewport={{ once: true }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 className="text-center  bg-clip-text bg-gradient-to-l text-transparent from-lor-300 via-lor-400 to-lor-500 leading-snug"
@@ -351,6 +356,7 @@ export default function Home({
 
               <motion.p
                 initial={{ opacity: 0, y: -100 }}
+                viewport={{ once: true }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 className="pt-8 text-center md:text-left"
@@ -362,6 +368,7 @@ export default function Home({
 
               <motion.div
                 initial={{ opacity: 0, y: -100 }}
+                viewport={{ once: true }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 style={{
@@ -411,6 +418,7 @@ export default function Home({
               <motion.h3
                 initial={{ opacity: 0, y: -100 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
                 className="text-center  bg-clip-text bg-gradient-to-l text-transparent from-lor-300 via-lor-400 to-lor-500 leading-snug"
               >
@@ -420,6 +428,7 @@ export default function Home({
               <motion.p
                 initial={{ opacity: 0, y: -100 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
                 className="pt-8 text-center md:text-left"
               >
@@ -435,6 +444,7 @@ export default function Home({
               <motion.div
                 initial={{ opacity: 0, y: -100 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
                 className="pt-8 flex items-center justify-center flex-wrap gap-16"
               >

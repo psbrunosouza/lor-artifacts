@@ -69,6 +69,7 @@ export default function DetailId({ artifact }: IDetailsProps) {
           <motion.div
             initial={{ opacity: 0, y: -100 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="flex items-center justify-center flex-col"
           >
@@ -97,6 +98,7 @@ export default function DetailId({ artifact }: IDetailsProps) {
         <motion.section
           initial={{ opacity: 0, y: -100 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.7 }}
           className="w-full md:2/3 lg:w-2/3 mt-8 flex items-center justify-center gap-8"
         >
@@ -123,6 +125,7 @@ export default function DetailId({ artifact }: IDetailsProps) {
         <motion.section
           initial={{ opacity: 0, y: -100 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           style={{
             display: !artifact.attributes.title.length ? 'none' : 'flex',
