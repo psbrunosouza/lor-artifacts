@@ -73,7 +73,7 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
       </Head>
 
       <main className="flex justify-center items-center flex-col">
-        <section className="px-16 w-full md:2/3 lg:w-2/3 h-auto p-6 lg:h-[64px] bg-lor-100 lg:mt-16 border-lor-600 border rounded-b-[12px] lg:rounded-[12px] flex flex-col lg:flex-row items-center justify-between">
+        <section className="px-16 w-full md:2/3 lg:w-2/3 h-auto p-6 lg:h-[64px] bg-lor-100 mt-28 border-lor-600 border rounded-b-[12px] lg:rounded-[12px] flex flex-col lg:flex-row items-center justify-between">
           <h1 className="text-[32px] mb-8 lg:mb-0">Artifacts</h1>
           <div className="flex gap-4 mt-8 lg:mt-0">
             <SearchComponent
@@ -82,13 +82,13 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
             ></SearchComponent>
             <button
               type="button"
-              className="h-[42px] w-[42px] bg-lor-600 rounded-[12px] hover:bg-lor-600/80 transition ease-in-out delay-50 flex items-center justify-center "
+              className="h-[42px] hidden w-[42px] bg-lor-600 rounded-[12px] hover:bg-lor-600/80 transition ease-in-out delay-50 flex items-center justify-center "
             >
               <Grid></Grid>
             </button>
             <button
               type="button"
-              className="h-[42px] w-[42px] bg-lor-600 rounded-[12px] hover:bg-lor-600/80 transition ease-in-out delay-50 flex items-center justify-center"
+              className="h-[42px] hidden w-[42px] bg-lor-600 rounded-[12px] hover:bg-lor-600/80 transition ease-in-out delay-50 flex items-center justify-center"
             >
               <Book></Book>
             </button>
@@ -98,23 +98,19 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
         <section className=" px-16 w-full md:2/3 lg:w-2/3 mt-16 flex flex-col md:flex-row items-center gap-16">
           {currentItems.map((artifact) => (
             <div
+              className="cursor-pointer"
               onClick={() => router.push(`/collection/${artifact.id}`)}
               key={artifact.id}
             >
               <ArtifactCard
+                image={artifact.attributes.image}
                 title={artifact.attributes.title}
                 power={artifact.attributes.power}
                 type={artifact.attributes.category.data.attributes.image}
                 status={
                   artifact.attributes.artifact_status.data.attributes.title
                 }
-              >
-                <img
-                  alt={artifact.attributes.path}
-                  className="h-full w-full rounded object-cover"
-                  src={artifact.attributes.image}
-                />
-              </ArtifactCard>
+              ></ArtifactCard>
             </div>
           ))}
         </section>

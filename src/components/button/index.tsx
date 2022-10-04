@@ -10,7 +10,7 @@ export function Button({ Icon, children, classes, ...props }: IButtonProps) {
   return (
     <button
       {...props}
-      className={`${classes} text-center justify-center bg-lor-200 text-white p-2 px-6 rounded flex`}
+      className={`${classes} text-[18px] text-center justify-center bg-lor-200 text-white rounded-[12px] py-2 px-3 flex transition hover:bg-lor-200/80 ease-in delay-50`}
     >
       {children}
     </button>

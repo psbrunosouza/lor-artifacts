@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { Menu } from 'react-feather';
+import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import './Index.module.scss';
 
 interface IMenu {
   name: string;
@@ -10,6 +12,7 @@ interface IMenu {
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const ref = useRef<any>(null);
   const router = useRouter();
 
   const menu: IMenu[] = [
@@ -27,8 +30,24 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen);
   }
 
+  function handleClickOutside(event: any) {
+    if (isMenuOpen && ref.current && !ref.current.contains(event.target)) {
+      setIsMenuOpen(!isMenuOpen);
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
-    <header className="backdrop-blur-sm bg-lor-50/30 fixed top-0 left-0 right-0 w-full flex z-40 py-4 justify-center items-center relative">
+    <motion.header
+      initial={{ opacity: 0, y: -100 }}
+      viewport={{ once: true }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="backdrop-blur-sm bg-lor-50/30 fixed top-0 left-0 right-0 w-full flex z-40 py-4 justify-center items-center"
+    >
       <div className="flex justify-between items-center w-[95%] lg:w-2/3">
         <div
           onClick={handleGoToHomePage}
@@ -65,7 +84,9 @@ export default function Header() {
         </div>
       </div>
 
-      <div
+      <motion.div
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
         className="absolute w-[90%] p-8 overflow-auto h-[240px] rounded-[12px] border bg-lor-100 border-lor-600 top-[102px]"
         hidden={!isMenuOpen}
       >
@@ -73,18 +94,21 @@ export default function Header() {
           {menu.map((item) => (
             <li
               onClick={handleMenu}
+              ref={ref}
               className={
                 router.pathname.includes(item.path)
-                  ? 'text-[18px]  hover:bg-lor-600 bg-lor-600 border border-lor-600 rounded-[12px] py-1 px-2 flex justify-center'
-                  : 'text-[18px] flex justify-center bg-lor-100 border border-lor-600 hover:bg-lor-600 rounded-[12px] py-1 px-2 transition ease-in delay-50'
+                  ? 'text-[18px]  hover:bg-lor-600 bg-lor-600 border border-lor-600 rounded-[12px] py-1 px-2 flex justify-center menu'
+                  : 'text-[18px] flex justify-center bg-lor-100 border border-lor-600 hover:bg-lor-600 rounded-[12px] py-1 px-2 transition ease-in delay-50 menu'
               }
               key={item.name}
             >
-              <Link href={item.path}>{item.name}</Link>
+              <Link href={item.path} passHref>
+                <a className="w-full text-center">{item.name}</a>
+              </Link>
             </li>
           ))}
         </ul>
-      </div>
-    </header>
+      </motion.div>
+    </motion.header>
   );
 }

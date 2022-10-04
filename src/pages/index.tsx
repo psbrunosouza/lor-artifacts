@@ -11,6 +11,7 @@ import { IClassification } from '../interfaces/IClassification';
 import { ICategories } from '../interfaces/ICategories';
 import { IPlace } from '../interfaces/IPlace';
 import api from '../services/api';
+import { motion } from 'framer-motion';
 
 interface ILoadedProps {
   artifact: boolean;
@@ -50,8 +51,8 @@ export default function Home({
     classifications.length && classifications[0].attributes.description
   );
 
-  async function handleGoToAnotherPage(): Promise<void> {
-    await router.push('/collection');
+  async function handleGoToAnotherPage(param?: string): Promise<void> {
+    await router.push(param ? `/collection/${param}` : '/collection');
   }
 
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
@@ -161,7 +162,13 @@ export default function Home({
       </Head>
 
       <main>
-        <section className="w-full md:w-1/2 m-auto flex flex-col justify-center py-16 px-8">
+        <motion.section
+          initial={{ opacity: 0, y: -100 }}
+          viewport={{ once: true }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="w-full md:w-1/2 m-auto flex flex-col justify-center py-16 px-8"
+        >
           <h3 className="text-center bg-clip-text bg-gradient-to-l text-transparent from-lor-300 via-lor-400 to-lor-500 leading-snug">
             Collection
           </h3>
@@ -172,7 +179,7 @@ export default function Home({
             to tell more about its paths over the middle earth.
           </p>
           <div
-            onClick={handleGoToAnotherPage}
+            onClick={() => handleGoToAnotherPage()}
             className="flex justify-center pt-8"
           >
             <Button classes="w-full md:w-auto">Explore</Button>
@@ -182,10 +189,12 @@ export default function Home({
             <div ref={sliderRef} className="keen-slider">
               {artifacts.map((artifact) => (
                 <div
-                  className="keen-slider__slide flex p-8 justify-center"
+                  onClick={() => handleGoToAnotherPage(String(artifact.id))}
+                  className="keen-slider__slide flex p-8 justify-center cursor-pointer"
                   key={artifact.id}
                 >
                   <ArtifactCard
+                    image={artifact.attributes.image}
                     title={artifact.attributes.title}
                     power={artifact.attributes.power}
                     type={artifact.attributes?.category.data?.attributes.image}
@@ -193,13 +202,7 @@ export default function Home({
                       artifact.attributes?.artifact_status.data?.attributes
                         .title
                     }
-                  >
-                    <img
-                      alt={artifact.attributes.path}
-                      className="h-full w-full rounded object-cover"
-                      src={artifact.attributes.image}
-                    />
-                  </ArtifactCard>
+                  ></ArtifactCard>
                 </div>
               ))}
               {loaded.artifact && instanceRef.current && (
@@ -225,7 +228,7 @@ export default function Home({
               )}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         <section
           className="bg-fixed"
@@ -233,11 +236,23 @@ export default function Home({
         >
           <div className="flex items-center mt-16 backdrop-brightness-50">
             <div className="w-full md:w-1/2  m-auto flex flex-col justify-center py-16 px-8">
-              <h3 className="text-center  bg-clip-text bg-gradient-to-l text-transparent from-lor-300 via-lor-400 to-lor-500 leading-snug">
+              <motion.h3
+                initial={{ opacity: 0, y: -100 }}
+                viewport={{ once: true }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-center  bg-clip-text bg-gradient-to-l text-transparent from-lor-300 via-lor-400 to-lor-500 leading-snug"
+              >
                 Classification
-              </h3>
+              </motion.h3>
 
-              <div className="pt-8 ">
+              <motion.div
+                initial={{ opacity: 0, y: -100 }}
+                viewport={{ once: true }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="pt-8 "
+              >
                 <div className="navigation-wrapper">
                   <div ref={sliderClassificationRef} className="keen-slider">
                     {classifications.map((classification) => (
@@ -272,7 +287,7 @@ export default function Home({
                           }}
                         >
                           <img
-                            src={classification.attributes.image}
+                            src="/assets/icons/type.svg"
                             height="42px"
                             alt={classification.attributes.title}
                             width="42px"
@@ -311,11 +326,17 @@ export default function Home({
                       )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              <p className="pt-8 text-center md:text-left">
+              <motion.p
+                initial={{ opacity: 0, y: -100 }}
+                viewport={{ once: true }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="pt-8 text-center"
+              >
                 {classificationDescription}
-              </p>
+              </motion.p>
             </div>
           </div>
         </section>
@@ -323,27 +344,67 @@ export default function Home({
         <section className="bg-fixed">
           <div className="flex items-center backdrop-brightness-50">
             <div className="w-full md:w-1/2  m-auto flex flex-col justify-center py-16 px-8">
-              <h3 className="text-center  bg-clip-text bg-gradient-to-l text-transparent from-lor-300 via-lor-400 to-lor-500 leading-snug">
+              <motion.h3
+                initial={{ opacity: 0, y: -100 }}
+                viewport={{ once: true }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-center  bg-clip-text bg-gradient-to-l text-transparent from-lor-300 via-lor-400 to-lor-500 leading-snug"
+              >
                 Places
-              </h3>
+              </motion.h3>
 
-              <p className="pt-8 text-center md:text-left">
+              <motion.p
+                initial={{ opacity: 0, y: -100 }}
+                viewport={{ once: true }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="pt-8 text-center md:text-left"
+              >
                 All items or will be classified by the place on it was made or
                 the last location of it. All places go to have its history and
                 characteristics described via some item.
-              </p>
+              </motion.p>
 
-              <div className="pt-8 flex items-center justify-center gap-16">
-                {/*<div>*/}
-                {/*  <PlaceCard title={places[0].attributes.title}>*/}
-                {/*    <img*/}
-                {/*      src={places[0].attributes.image}*/}
-                {/*      alt={places[0].attributes.title}*/}
-                {/*      className="object-cover rounded-[8px] w-full h-full"*/}
-                {/*    />*/}
-                {/*  </PlaceCard>*/}
-                {/*</div>*/}
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: -100 }}
+                viewport={{ once: true }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                style={{
+                  display:
+                    places[0] && places[1] && places[3] ? 'flex' : 'none',
+                }}
+                className="pt-8 flex items-center justify-center gap-16"
+              >
+                <div>
+                  <PlaceCard title={places[0].attributes.title}>
+                    <img
+                      src={places[0].attributes.image}
+                      alt={places[0].attributes.title}
+                      className="object-cover rounded-[8px] w-full h-full"
+                    />
+                  </PlaceCard>
+                </div>
+                <div className="hidden md:flex ">
+                  <PlaceCard title={places[1].attributes.title}>
+                    <img
+                      src={places[1].attributes.image}
+                      alt={places[1].attributes.title}
+                      className="object-cover rounded-[8px] w-full h-full"
+                    />
+                  </PlaceCard>
+                </div>
+                <div className="hidden lg:flex ">
+                  <PlaceCard title={places[2].attributes.title}>
+                    <img
+                      src={places[2].attributes.image}
+                      alt={places[2].attributes.title}
+                      className="object-cover rounded-[8px] w-full h-full"
+                    />
+                  </PlaceCard>
+                </div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -354,11 +415,23 @@ export default function Home({
         >
           <div className=" flex items-center backdrop-brightness-50">
             <div className="w-full md:w-1/2  m-auto flex flex-col justify-center py-16 px-8">
-              <h3 className="text-center  bg-clip-text bg-gradient-to-l text-transparent from-lor-300 via-lor-400 to-lor-500 leading-snug">
+              <motion.h3
+                initial={{ opacity: 0, y: -100 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="text-center  bg-clip-text bg-gradient-to-l text-transparent from-lor-300 via-lor-400 to-lor-500 leading-snug"
+              >
                 Categories
-              </h3>
+              </motion.h3>
 
-              <p className="pt-8 text-center md:text-left">
+              <motion.p
+                initial={{ opacity: 0, y: -100 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="pt-8 text-center md:text-left"
+              >
                 All items will be classified into categories, below you can see
                 a set of icons around some categories used to classification of
                 artifacts. Initially the most present category will be ring,
@@ -366,9 +439,15 @@ export default function Home({
                 rings of power. soon we plan fill this website with a lot of
                 artifacts and more information about the items of the tolkien
                 Universe.
-              </p>
+              </motion.p>
 
-              <div className="pt-8 flex items-center justify-center flex-wrap gap-16">
+              <motion.div
+                initial={{ opacity: 0, y: -100 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="pt-8 flex items-center justify-center flex-wrap gap-16"
+              >
                 {categories.map((category) => (
                   <div
                     className="flex flex-col justify-center items-center "
@@ -385,7 +464,7 @@ export default function Home({
                     </span>
                   </div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
