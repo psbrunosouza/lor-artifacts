@@ -378,28 +378,28 @@ export default function Home({
                 className="pt-8 flex items-center justify-center gap-16"
               >
                 <div>
-                  <PlaceCard title={places[0].attributes.title}>
+                  <PlaceCard title={places[0]?.attributes?.title}>
                     <img
-                      src={places[0].attributes.image}
-                      alt={places[0].attributes.title}
+                      src={places[0]?.attributes?.image}
+                      alt={places[0]?.attributes?.title}
                       className="object-cover rounded-[8px] w-full h-full"
                     />
                   </PlaceCard>
                 </div>
                 <div className="hidden md:flex ">
-                  <PlaceCard title={places[1].attributes.title}>
+                  <PlaceCard title={places[1]?.attributes?.title}>
                     <img
-                      src={places[1].attributes.image}
-                      alt={places[1].attributes.title}
+                      src={places[1]?.attributes?.image}
+                      alt={places[1]?.attributes?.title}
                       className="object-cover rounded-[8px] w-full h-full"
                     />
                   </PlaceCard>
                 </div>
                 <div className="hidden lg:flex ">
-                  <PlaceCard title={places[2].attributes.title}>
+                  <PlaceCard title={places[2]?.attributes?.title}>
                     <img
-                      src={places[2].attributes.image}
-                      alt={places[2].attributes.title}
+                      src={places[2]?.attributes?.image}
+                      alt={places[2]?.attributes?.title}
                       className="object-cover rounded-[8px] w-full h-full"
                     />
                   </PlaceCard>

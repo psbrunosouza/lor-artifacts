@@ -1,0 +1,45 @@
+Index: src/pages/index.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/pages/index.tsx b/src/pages/index.tsx
+--- a/src/pages/index.tsx	
++++ b/src/pages/index.tsx	
+@@ -378,10 +378,10 @@
+                 className="pt-8 flex items-center justify-center gap-16"
+               >
+                 <div>
+-                  <PlaceCard title={places[0].attributes.title}>
++                  <PlaceCard title={places[0]?.attributes?.title}>
+                     <img
+-                      src={places[0].attributes.image}
+-                      alt={places[0].attributes.title}
++                      src={places[0]?.attributes?.image}
++                      alt={places[0]?.attributes?.title}
+                       className="object-cover rounded-[8px] w-full h-full"
+                     />
+                   </PlaceCard>
+@@ -389,17 +389,17 @@
+                 <div className="hidden md:flex ">
+                   <PlaceCard title={places[1].attributes.title}>
+                     <img
+-                      src={places[1].attributes.image}
+-                      alt={places[1].attributes.title}
++                      src={places[0]?.attributes?.image}
++                      alt={places[0]?.attributes?.title}
+                       className="object-cover rounded-[8px] w-full h-full"
+                     />
+                   </PlaceCard>
+                 </div>
+                 <div className="hidden lg:flex ">
+-                  <PlaceCard title={places[2].attributes.title}>
++                  <PlaceCard title={places[2]?.attributes?.title}>
+                     <img
+-                      src={places[2].attributes.image}
+-                      alt={places[2].attributes.title}
++                      src={places[0]?.attributes?.image}
++                      alt={places[0]?.attributes?.title}
+                       className="object-cover rounded-[8px] w-full h-full"
+                     />
+                   </PlaceCard>
