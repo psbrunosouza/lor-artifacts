@@ -7,15 +7,13 @@ através dos seus inúmeros livros.
 
 ## Apresentação
 
-<div style="display: flex; margin-bottom: 24px; justify-content: center; align-items: center">
+<p align="center" style="margin-bottom: 24px; ">
     <img alt=""  src="https://lor-artifacts.s3.amazonaws.com/readme/lor-app.gif"/>
-</div>  
+</p>  
 
-<div style="display: flex;  justify-content: center; align-items: center">
+<p align="center">
     <img alt=""  src="https://lor-artifacts.s3.amazonaws.com/readme/lor-web.gif"/>
-</div>  
-
-
+</p>  
 
 
 ## ✅ Como Usar
