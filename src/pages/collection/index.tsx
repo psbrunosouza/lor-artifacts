@@ -131,22 +131,24 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
           </div>
         </section>
 
-        <section className=" px-16 w-full md:2/3 lg:w-2/3 mt-16 flex flex-col md:flex-row items-center gap-16">
-          {currentItems.map((artifact) => (
-            <div
-              className="cursor-pointer"
-              onClick={() => router.push(`/collection/${artifact.slug}`)}
-              key={artifact.id}
-            >
-              <ArtifactCard
-                image={artifact.image}
-                title={artifact.title}
-                power={artifact.power}
-                type={artifact.category.image}
-                status={artifact.artifactStatus.color}
-              ></ArtifactCard>
-            </div>
-          ))}
+        <section className="px-16 w-full md:2/3 lg:w-2/3 mt-16  gap-16">
+          <div className="grid grid-cols-1 gap-y-16 gap-x-8 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+            {currentItems.map((artifact) => (
+              <div
+                className="cursor-pointer justify-self-center"
+                onClick={() => router.push(`/collection/${artifact.slug}`)}
+                key={artifact.id}
+              >
+                <ArtifactCard
+                  image={artifact.image}
+                  title={artifact.title}
+                  power={artifact.power}
+                  type={artifact.category.image}
+                  status={artifact.artifactStatus.color}
+                ></ArtifactCard>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className="px-16 w-full md:2/3 lg:w-2/3 my-16 flex justify-center items-center gap-16">
