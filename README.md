@@ -1,27 +1,53 @@
-# Next.js + Tailwind CSS Example
+# Lord of the rings - artifacts
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+Um sistema desenvolvido com objetivo de catalogar os artefatos do universo escrito por J.R.R.Tolkien 
+através dos seus inúmeros livros.
 
-## Deploy your own
+<a href="lor-artifacts.vercel.app">lor-artifacts</a>
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+## Apresentação
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+<div style="gap: 24px; display: flex; justify-content: center; align-items: center">
+    <div style="display: flex; justify-content: center; align-items: center">
+        <img alt="" src="https://lor-artifacts.s3.amazonaws.com/readme/lor-app.gif"/>
+    </div>  
+    <div style="display: flex; justify-content: center; align-items: center">
+        <img alt="" src="https://lor-artifacts.s3.amazonaws.com/readme/lor-web.gif"/>
+    </div>  
+</div>
 
-## How to use
+## ✅ Como Usar
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+  ```
+# Clone o repositório
+$ git clone 
+    http: https://github.com/psbrunosouza/lor-artifacts.git
+    ssh: git@github.com:psbrunosouza/lor-artifacts.git
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-```
+# Entre na pasta do repositório
+$ cd lor-artifacts
 
-```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
+# Instale as dependências
+$ yarn install/ npm install
 
-```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
-```
+# Rode a aplicação
+$ yarn dev / npm run dev
+  ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## 🚀 Tecnologias
+Esse projeto foi desenvolvido com:
+
+- <a href="https://nextjs.org/">Next JS</a>
+- <a href="https://tailwindui.com/">Tailwind</a>
+- <a href="https://sass-lang.com/">Scss</a>
+- <a href="https://keen-slider.io/">Keen-slider</a>
+- <a href="https://www.apollographql.com/docs/react/">Graphql (apollo client)</a>
+- <a href="https://www.framer.com/motion/">Framer Motion</a>
+- <a href="https://www.npmjs.com/package/react-paginate">React Paginate</a>
+- <a href="https://www.npmjs.com/package/react-feather">React Feather</a>
+
+## 📝 Licença
+Este código-fonte está sob uma licensa MIT. Confira a licença para mais informações.
+
+## #️⃣ Versão
+- 0.0.1
