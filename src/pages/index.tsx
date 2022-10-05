@@ -69,15 +69,13 @@ const GET_STATUSES_QUERY = gql`
 
 const GET_ARTIFACTS_QUERY = gql`
   query Artifacts {
-    artifacts {
-      id
+    artifacts(orderBy: createdAt_DESC, first: 3) {
       title
       description
       image
       power
       slug
       artifactStatus {
-        id
         title
         description
         image
@@ -85,14 +83,12 @@ const GET_ARTIFACTS_QUERY = gql`
         slug
       }
       category {
-        id
         title
         description
         image
         slug
       }
       place {
-        id
         title
         description
         image
