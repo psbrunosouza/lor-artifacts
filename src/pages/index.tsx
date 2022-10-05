@@ -260,7 +260,7 @@ export default function Home({
             <div ref={sliderRef} className="keen-slider">
               {artifacts.map((artifact) => (
                 <div
-                  onClick={() => handleGoToAnotherPage(String(artifact.id))}
+                  onClick={() => handleGoToAnotherPage(String(artifact.slug))}
                   className="keen-slider__slide flex p-8 justify-center cursor-pointer"
                   key={artifact.id}
                 >

@@ -143,7 +143,7 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
                 title={artifact.title}
                 power={artifact.power}
                 type={artifact.category.image}
-                status={artifact.artifactStatus.title}
+                status={artifact.artifactStatus.color}
               ></ArtifactCard>
             </div>
           ))}

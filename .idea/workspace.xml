@@ -5,22 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1002f0cb-a004-4eb7-ad43-2e393a7fed50" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/interfaces/IStatus.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/apollo.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/artifacts-card/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/artifacts-card/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/IArtifacts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/IArtifacts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/ICategories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/ICategories.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/IClassification.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/IDefault.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/IDefault.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/IPlace.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/IPlace.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/collection/[detailId].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/collection/[slug].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/footer/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/collection/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/collection/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +126,7 @@
       <workItem from="1664825852202" duration="13970000" />
       <workItem from="1664878049813" duration="2926000" />
       <workItem from="1664883843748" duration="704000" />
-      <workItem from="1664928899206" duration="9051000" />
+      <workItem from="1664928899206" duration="9807000" />
     </task>
     <servers />
   </component>
