@@ -11,9 +11,12 @@ através dos seus inúmeros livros.
     <div style="display: flex; justify-content: center; align-items: center">
         <img alt="a" src="https://lor-artifacts.s3.amazonaws.com/readme/lor-gif-app.gif"/>
     </div>  
-    <div style="display: flex; justify-content: center; align-items: center">
-        <img alt="" src="https://lor-artifacts.s3.amazonaws.com/readme/lor-web.gif"/>
-    </div>  
+
+[//]: # (    <div style="display: flex; justify-content: center; align-items: center">)
+
+[//]: # (        <img alt="" src="https://lor-artifacts.s3.amazonaws.com/readme/lor-web.gif"/>)
+
+[//]: # (    </div>  )
 </div>
 
 ## ✅ Como Usar
