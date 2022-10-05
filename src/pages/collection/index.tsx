@@ -17,7 +17,7 @@ interface ICollectionPageProps {
 
 const GET_ARTIFACTS_QUERY = gql`
   query Artifacts {
-    artifacts {
+    artifacts(orderBy: power_DESC) {
       id
       title
       description
