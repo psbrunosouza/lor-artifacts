@@ -7,14 +7,16 @@ através dos seus inúmeros livros.
 
 ## Apresentação
 
-<div style="gap: 24px; display: flex; justify-content: center; align-items: center">
-    <div style="display: flex; justify-content: center; align-items: center">
-        <img alt="" width="420px" src="https://lor-artifacts.s3.amazonaws.com/readme/lor-app.gif"/>
-    </div>  
-    <div style="display: flex; justify-content: center; align-items: center">
-        <img alt=""  src="https://lor-artifacts.s3.amazonaws.com/readme/lor-web.gif"/>
-    </div>  
-</div>
+<div style="display: flex; margin-bottom: 24px; justify-content: center; align-items: center">
+    <img alt=""  src="https://lor-artifacts.s3.amazonaws.com/readme/lor-app.gif"/>
+</div>  
+
+<div style="display: flex;  justify-content: center; align-items: center">
+    <img alt=""  src="https://lor-artifacts.s3.amazonaws.com/readme/lor-web.gif"/>
+</div>  
+
+
+
 
 ## ✅ Como Usar
 
