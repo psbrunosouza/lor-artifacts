@@ -105,7 +105,6 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
     <Layout>
       <Head>
         <title>Tolkien Universe - Collection</title>
-        <link rel="icon" href="/public/favicon.ico" />
       </Head>
 
       <main className="flex justify-center items-center flex-col">

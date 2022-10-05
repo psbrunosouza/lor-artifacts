@@ -225,7 +225,6 @@ export default function Home({
     <Layout>
       <Head>
         <title>Tolkien Universe - Artifacts</title>
-        <link rel="icon" href="/public/favicon.ico" />
       </Head>
 
       <main>

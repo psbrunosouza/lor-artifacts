@@ -85,8 +85,7 @@ export default function Slug({ artifact }: IDetailsProps) {
   return (
     <Layout>
       <Head>
-        <title>Tolkien Universe - Artifact Detail</title>
-        <link rel="icon" href="/public/favicon.ico" />
+        <title>Tolkien Universe - {artifact.title}</title>
       </Head>
 
       <main className="flex justify-center items-center flex-col">
