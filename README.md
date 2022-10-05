@@ -3,13 +3,13 @@
 Um sistema desenvolvido com objetivo de catalogar os artefatos do universo escrito por J.R.R.Tolkien 
 através dos seus inúmeros livros.
 
-<a href="lor-artifacts.vercel.app">lor-artifacts</a>
+<a href="https://lor-artifacts.vercel.app">lor-artifacts</a>
 
 ## Apresentação
 
 <div style="gap: 24px; display: flex; justify-content: center; align-items: center">
     <div style="display: flex; justify-content: center; align-items: center">
-        <img alt="" src="https://lor-artifacts.s3.amazonaws.com/readme/lor-app.gif"/>
+        <img alt="" src="https://lor-artifacts.s3.amazonaws.com/readme/lor-gif-app.gif"/>
     </div>  
     <div style="display: flex; justify-content: center; align-items: center">
         <img alt="" src="https://lor-artifacts.s3.amazonaws.com/readme/lor-web.gif"/>
