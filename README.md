@@ -9,10 +9,10 @@ através dos seus inúmeros livros.
 
 <div style="gap: 24px; display: flex; justify-content: center; align-items: center">
     <div style="display: flex; justify-content: center; align-items: center">
-        <img alt="" src="https://lor-artifacts.s3.amazonaws.com/readme/lor-gif-app.gif"/>
+        <img alt="" width="200px" src="https://lor-artifacts.s3.amazonaws.com/readme/lor-gif-app.gif"/>
     </div>  
     <div style="display: flex; justify-content: center; align-items: center">
-        <img alt="" src="https://lor-artifacts.s3.amazonaws.com/readme/lor-web.gif"/>
+        <img alt="" width="900px" src="https://lor-artifacts.s3.amazonaws.com/readme/lor-web.gif"/>
     </div>  
 </div>
 
