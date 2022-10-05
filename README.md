@@ -7,9 +7,10 @@ através dos seus inúmeros livros.
 
 ## Apresentação
 
+<img alt="" width="200px" src="http://lor-artifacts.s3.amazonaws.com/readme/lor-gif-app.gif"/>
+
 <div style="gap: 24px; display: flex; justify-content: center; align-items: center">
     <div style="display: flex; justify-content: center; align-items: center">
-        <img alt="" width="200px" src="http://lor-artifacts.s3.amazonaws.com/readme/lor-gif-app.gif"/>
     </div>  
     <div style="display: flex; justify-content: center; align-items: center">
         <img alt="" width="900px" src="http://lor-artifacts.s3.amazonaws.com/readme/lor-web.gif"/>
