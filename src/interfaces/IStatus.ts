@@ -1,11 +1,11 @@
 import { IDefault } from './IDefault';
 import { IArtifacts } from './IArtifacts';
 
-export interface ICategories extends IDefault {
-  title: string;
-  image: string;
-  slug: string;
+export interface IStatus extends IDefault {
+  title: 'special' | 'rare' | 'legend';
   description: string;
   color: string;
+  image: string;
+  slug: string;
   artifacts: IArtifacts[];
 }

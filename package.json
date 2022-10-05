@@ -7,9 +7,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.0",
     "axios": "^0.27.2",
     "feather-icons": "^4.29.0",
     "framer-motion": "^7.5.1",
+    "graphql": "^16.6.0",
     "keen-slider": "^6.8.2",
     "next": "latest",
     "react": "18.1.0",

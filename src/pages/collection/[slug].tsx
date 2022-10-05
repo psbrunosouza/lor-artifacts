@@ -6,12 +6,82 @@ import { Button } from '../../components/button';
 import api from '../../services/api';
 import { IArtifacts } from '../../interfaces/IArtifacts';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import client from '../../lib/apollo';
+import { gql } from '@apollo/client';
 
 interface IDetailsProps {
   artifact: IArtifacts;
 }
 
-export default function DetailId({ artifact }: IDetailsProps) {
+const GET_ARTIFACT_QUERY = gql`
+  query Artifact($slug: String) {
+    artifact(where: { slug: $slug }) {
+      id
+      title
+      description
+      image
+      power
+      slug
+      artifactStatus {
+        id
+        title
+        description
+        image
+        color
+        slug
+      }
+      category {
+        id
+        title
+        description
+        image
+        slug
+      }
+      place {
+        id
+        title
+        description
+        image
+      }
+    }
+  }
+`;
+
+const GET_ARTIFACTS_QUERY = gql`
+  query Artifacts {
+    artifacts {
+      id
+      title
+      description
+      image
+      power
+      slug
+      artifactStatus {
+        id
+        title
+        description
+        image
+        color
+        slug
+      }
+      category {
+        id
+        title
+        description
+        image
+        slug
+      }
+      place {
+        id
+        title
+        description
+        image
+      }
+    }
+  }
+`;
+
+export default function Slug({ artifact }: IDetailsProps) {
   return (
     <Layout>
       <Head>
@@ -29,8 +99,7 @@ export default function DetailId({ artifact }: IDetailsProps) {
           >
             <div
               style={{
-                borderColor:
-                  artifact.attributes.artifact_status.data.attributes.color,
+                borderColor: artifact.artifactStatus.color,
               }}
               className="border-2 w-[64px] h-[64px] md:w-[84px] md:h-[84px] rounded-[50%] mt-12 flex items-center justify-center"
             >
@@ -38,13 +107,13 @@ export default function DetailId({ artifact }: IDetailsProps) {
                 <img
                   width="32px"
                   height="32px"
-                  src={artifact.attributes.category.data.attributes.image}
+                  src={artifact.category.image}
                   alt=""
                 />
               </span>
             </div>
             <span className="font-bold leading-6">
-              {artifact.attributes.category.data.attributes.title}
+              {artifact.category.title}
             </span>
           </motion.div>
 
@@ -56,12 +125,11 @@ export default function DetailId({ artifact }: IDetailsProps) {
           >
             <div
               style={{
-                backgroundColor:
-                  artifact.attributes.artifact_status.data.attributes.color,
+                backgroundColor: artifact.artifactStatus.color,
               }}
               className={`w-[64px] h-[64px] md:w-[84px] md:h-[84px] rounded-[50%] flex items-center justify-center `}
             >
-              <span className="font-bold">{artifact.attributes.power}</span>
+              <span className="font-bold">{artifact.power}</span>
             </div>
             <span className="font-bold leading-6">Power</span>
           </motion.div>
@@ -75,8 +143,7 @@ export default function DetailId({ artifact }: IDetailsProps) {
           >
             <div
               style={{
-                borderColor:
-                  artifact.attributes.artifact_status.data.attributes.color,
+                borderColor: artifact.artifactStatus.color,
               }}
               className="border-2 w-[64px] h-[64px] md:w-[84px] md:h-[84px] rounded-[50%] mt-12 flex items-center justify-center"
             >
@@ -90,7 +157,7 @@ export default function DetailId({ artifact }: IDetailsProps) {
               </span>
             </div>
             <span className="font-bold leading-6">
-              {artifact.attributes.artifact_status.data.attributes.title}
+              {artifact.artifactStatus.title}
             </span>
           </motion.div>
         </section>
@@ -103,9 +170,9 @@ export default function DetailId({ artifact }: IDetailsProps) {
           className="w-full md:2/3 lg:w-2/3 mt-8 flex items-center justify-center gap-8"
         >
           <div className="w-[280px] h-[380px] md:w-[520px] flex items-center justify-center border border-lor-600 rounded-[12px]">
-            {artifact.attributes.image ? (
+            {artifact.image ? (
               <img
-                src={artifact.attributes.image}
+                src={artifact.image}
                 alt=""
                 className="w-full h-full object-cover rounded-[12px]"
               />
@@ -128,14 +195,14 @@ export default function DetailId({ artifact }: IDetailsProps) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           style={{
-            display: !artifact.attributes.title.length ? 'none' : 'flex',
+            display: !artifact.title.length ? 'none' : 'flex',
           }}
           className="w-[280px] md:w-[520px] min-h-[140px] my-8 flex items-center justify-center flex-col p-4 gap-8 bg-lor-100 border-lor-600 border rounded-[12px] overflow-auto"
         >
-          <h1 className="text-[26px]">{artifact.attributes.title}</h1>
+          <h1 className="text-[26px]">{artifact.title}</h1>
           <p className="text-center">
-            {artifact.attributes.description
-              ? artifact.attributes.description
+            {artifact.description
+              ? artifact.description
               : 'This artifact explanation is under construction, then go there and back again to see a new description...'}
           </p>
         </motion.section>
@@ -154,29 +221,28 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     };
   }
 
-  const { data: artifacts } = await api(`/artifacts/${params.detailId}`, {
-    params: {
-      populate: '*',
+  const { data: artifactResponse } = await client.query({
+    query: GET_ARTIFACT_QUERY,
+    variables: {
+      slug: params.slug,
     },
   });
 
   return {
     props: {
-      artifact: artifacts.data,
+      artifact: artifactResponse.artifact,
     },
     revalidate: 60 * 60 * 12,
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data: artifacts } = await api('/artifacts', {
-    params: {
-      populate: '*',
-    },
+  const { data: artifactsResponse } = await client.query({
+    query: GET_ARTIFACTS_QUERY,
   });
 
-  const paths = artifacts.data.map((artifact: IArtifacts) => ({
-    params: { detailId: `${artifact.id}` },
+  const paths = artifactsResponse.artifacts.map((artifact: IArtifacts) => ({
+    params: { slug: `${artifact.slug}` },
   }));
 
   return { paths, fallback: false };

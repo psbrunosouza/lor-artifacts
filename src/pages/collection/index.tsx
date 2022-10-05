@@ -8,10 +8,46 @@ import Head from 'next/head';
 import { SearchComponent } from '../../components/search';
 import { ArtifactCard } from '../../components/artifacts-card';
 import { useRouter } from 'next/router';
+import { gql } from '@apollo/client';
+import client from '../../lib/apollo';
 
 interface ICollectionPageProps {
   artifacts: IArtifacts[];
 }
+
+const GET_ARTIFACTS_QUERY = gql`
+  query Artifacts {
+    artifacts {
+      id
+      title
+      description
+      image
+      power
+      slug
+      artifactStatus {
+        id
+        title
+        description
+        image
+        color
+        slug
+      }
+      category {
+        id
+        title
+        description
+        image
+        slug
+      }
+      place {
+        id
+        title
+        description
+        image
+      }
+    }
+  }
+`;
 
 export default function Collection({ artifacts }: ICollectionPageProps) {
   const [searchValue, setSearchValue] = useState('');
@@ -46,16 +82,16 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
         searchString !== ''
           ? artifacts.filter(
               (artifact) =>
-                artifact.attributes.title
+                artifact.title
                   .toLowerCase()
                   .includes(searchString.toLowerCase()) ||
-                String(artifact.attributes.power)
+                String(artifact.power)
                   .toLowerCase()
                   .includes(searchString.toLowerCase()) ||
-                artifact.attributes.category.data.attributes.title
+                artifact.category.title
                   .toLowerCase()
                   .includes(searchString.toLowerCase()) ||
-                artifact.attributes.artifact_status.data.attributes.description
+                artifact.artifactStatus.description
                   .toLowerCase()
                   .includes(searchString.toLowerCase())
             )
@@ -99,17 +135,15 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
           {currentItems.map((artifact) => (
             <div
               className="cursor-pointer"
-              onClick={() => router.push(`/collection/${artifact.id}`)}
+              onClick={() => router.push(`/collection/${artifact.slug}`)}
               key={artifact.id}
             >
               <ArtifactCard
-                image={artifact.attributes.image}
-                title={artifact.attributes.title}
-                power={artifact.attributes.power}
-                type={artifact.attributes.category.data.attributes.image}
-                status={
-                  artifact.attributes.artifact_status.data.attributes.title
-                }
+                image={artifact.image}
+                title={artifact.title}
+                power={artifact.power}
+                type={artifact.category.image}
+                status={artifact.artifactStatus.title}
               ></ArtifactCard>
             </div>
           ))}
@@ -137,15 +171,13 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
 }
 
 export async function getStaticProps() {
-  const { data: artifacts } = await api('/artifacts', {
-    params: {
-      populate: '*',
-    },
+  const { data: artifactsResponse } = await client.query({
+    query: GET_ARTIFACTS_QUERY,
   });
 
   return {
     props: {
-      artifacts: artifacts.data,
+      artifacts: artifactsResponse.artifacts ? artifactsResponse.artifacts : [],
     },
   };
 }

@@ -7,32 +7,103 @@ import { PlaceCard } from '../components/place-card';
 import { useKeenSlider } from 'keen-slider/react';
 import { useRouter } from 'next/router';
 import { IArtifacts } from '../interfaces/IArtifacts';
-import { IClassification } from '../interfaces/IClassification';
+import { IStatus } from '../interfaces/IStatus';
 import { ICategories } from '../interfaces/ICategories';
 import { IPlace } from '../interfaces/IPlace';
-import api from '../services/api';
 import { motion } from 'framer-motion';
+import client from '../lib/apollo';
+import { gql } from '@apollo/client';
 
 interface ILoadedProps {
   artifact: boolean;
-  classification: boolean;
+  statuses: boolean;
 }
 
 interface ICurrentSlideProps {
   artifact: number;
-  classification: number;
+  statuses: number;
 }
 
 interface IHomePageProps {
   categories: ICategories[];
-  classifications: IClassification[];
+  statuses: IStatus[];
   places: IPlace[];
   artifacts: IArtifacts[];
 }
 
+const GET_PLACES_QUERY = gql`
+  query Places {
+    places {
+      id
+      title
+      description
+      image
+    }
+  }
+`;
+
+const GET_CATEGORIES_QUERY = gql`
+  query Categories {
+    categories {
+      id
+      title
+      description
+      image
+      slug
+    }
+  }
+`;
+
+const GET_STATUSES_QUERY = gql`
+  query Statuses {
+    artifactStatuses {
+      id
+      title
+      description
+      image
+      color
+      slug
+    }
+  }
+`;
+
+const GET_ARTIFACTS_QUERY = gql`
+  query Artifacts {
+    artifacts {
+      id
+      title
+      description
+      image
+      power
+      slug
+      artifactStatus {
+        id
+        title
+        description
+        image
+        color
+        slug
+      }
+      category {
+        id
+        title
+        description
+        image
+        slug
+      }
+      place {
+        id
+        title
+        description
+        image
+      }
+    }
+  }
+`;
+
 export default function Home({
   categories,
-  classifications,
+  statuses,
   places,
   artifacts,
 }: IHomePageProps) {
@@ -40,15 +111,15 @@ export default function Home({
 
   const [currentSlide, setCurrentSlide] = useState<ICurrentSlideProps>({
     artifact: 0,
-    classification: 0,
+    statuses: 0,
   });
   const [loaded, setLoaded] = useState<ILoadedProps>({
     artifact: false,
-    classification: false,
+    statuses: false,
   });
 
   const [classificationDescription, setClassificationDescription] = useState(
-    classifications.length && classifications[0].attributes.description
+    statuses.length && statuses[0].description
   );
 
   async function handleGoToAnotherPage(param?: string): Promise<void> {
@@ -110,11 +181,11 @@ export default function Home({
         slideChanged(slider) {
           setCurrentSlide({
             ...currentSlide,
-            classification: slider.track.details.rel,
+            statuses: slider.track.details.rel,
           });
         },
         created() {
-          setLoaded({ ...loaded, classification: true });
+          setLoaded({ ...loaded, statuses: true });
         },
         initial: 0,
         breakpoints: {
@@ -194,14 +265,11 @@ export default function Home({
                   key={artifact.id}
                 >
                   <ArtifactCard
-                    image={artifact.attributes.image}
-                    title={artifact.attributes.title}
-                    power={artifact.attributes.power}
-                    type={artifact.attributes?.category.data?.attributes.image}
-                    status={
-                      artifact.attributes?.artifact_status.data?.attributes
-                        .title
-                    }
+                    image={artifact.image}
+                    title={artifact.title}
+                    power={artifact.power}
+                    type={artifact?.category.image}
+                    status={artifact.artifactStatus.color}
                   ></ArtifactCard>
                 </div>
               ))}
@@ -255,17 +323,15 @@ export default function Home({
               >
                 <div className="navigation-wrapper">
                   <div ref={sliderClassificationRef} className="keen-slider">
-                    {classifications.map((classification) => (
+                    {statuses.map((status) => (
                       <div
-                        key={classification.id}
+                        key={status.id}
                         onClick={() =>
-                          setClassificationDescription(
-                            classification.attributes.description
-                          )
+                          setClassificationDescription(status.description)
                         }
                         className="h-[160px] max-w-[160px] keen-slider__slide bg-white relative cursor-pointer"
                         style={{
-                          backgroundColor: classification.attributes.color,
+                          backgroundColor: status.color,
                           clipPath:
                             'polygon(33% 0%, 68% 0%, 85% 50%, 68% 100%, 33% 100%, 15% 50%)',
                         }}
@@ -289,41 +355,39 @@ export default function Home({
                           <img
                             src="/assets/icons/type.svg"
                             height="42px"
-                            alt={classification.attributes.title}
+                            alt={status.title}
                             width="42px"
                           />
-                          <span className="font-bold">
-                            {classification.attributes.title}
-                          </span>
+                          <span className="font-bold">{status.title}</span>
                         </div>
                       </div>
                     ))}
-                    {loaded.classification &&
-                      instanceClassificationRef.current && (
-                        <>
-                          <Arrow
-                            left
-                            onClick={(e: any) =>
-                              e.stopPropagation() ||
-                              instanceClassificationRef.current?.prev()
-                            }
-                            disabled={currentSlide.classification === 0}
-                          />
+                    {loaded.statuses && instanceClassificationRef.current && (
+                      <>
+                        <Arrow
+                          left
+                          onClick={(e: any) =>
+                            e.stopPropagation() ||
+                            instanceClassificationRef.current?.prev()
+                          }
+                          disabled={currentSlide.statuses === 0}
+                        />
 
-                          <Arrow
-                            onClick={(e: any) =>
-                              e.stopPropagation() ||
-                              instanceClassificationRef.current?.next()
-                            }
-                            disabled={
-                              currentSlide.classification ===
+                        <Arrow
+                          onClick={(e: any) =>
+                            e.stopPropagation() ||
+                            instanceClassificationRef.current?.next()
+                          }
+                          disabled={
+                            instanceClassificationRef.current.track.details &&
+                            currentSlide.statuses ===
                               instanceClassificationRef.current.track.details
                                 .slides.length -
                                 1
-                            }
-                          />
-                        </>
-                      )}
+                          }
+                        />
+                      </>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -378,28 +442,28 @@ export default function Home({
                 className="pt-8 flex items-center justify-center gap-16"
               >
                 <div>
-                  <PlaceCard title={places[0]?.attributes?.title}>
+                  <PlaceCard title={places[0]?.title}>
                     <img
-                      src={places[0]?.attributes?.image}
-                      alt={places[0]?.attributes?.title}
+                      src={places[0]?.image}
+                      alt={places[0]?.title}
                       className="object-cover rounded-[8px] w-full h-full"
                     />
                   </PlaceCard>
                 </div>
                 <div className="hidden md:flex ">
-                  <PlaceCard title={places[1]?.attributes?.title}>
+                  <PlaceCard title={places[1]?.title}>
                     <img
-                      src={places[1]?.attributes?.image}
-                      alt={places[1]?.attributes?.title}
+                      src={places[1]?.image}
+                      alt={places[1]?.title}
                       className="object-cover rounded-[8px] w-full h-full"
                     />
                   </PlaceCard>
                 </div>
                 <div className="hidden lg:flex ">
-                  <PlaceCard title={places[2]?.attributes?.title}>
+                  <PlaceCard title={places[2]?.title}>
                     <img
-                      src={places[2]?.attributes?.image}
-                      alt={places[2]?.attributes?.title}
+                      src={places[2]?.image}
+                      alt={places[2]?.title}
                       className="object-cover rounded-[8px] w-full h-full"
                     />
                   </PlaceCard>
@@ -454,14 +518,12 @@ export default function Home({
                     key={category.id}
                   >
                     <img
-                      src={category.attributes.image}
+                      src={category.image}
                       width="84px"
                       height="84px"
-                      alt={category.attributes.title}
+                      alt={category.title}
                     />
-                    <span className="text-center">
-                      {category.attributes.title}
-                    </span>
+                    <span className="text-center">{category.title}</span>
                   </div>
                 ))}
               </motion.div>
@@ -471,30 +533,6 @@ export default function Home({
       </main>
     </Layout>
   );
-}
-
-export async function getStaticProps() {
-  const { data: categories } = await api('/categories');
-  const { data: classifications } = await api('/artifact-statuses', {
-    params: {
-      populate: '*',
-    },
-  });
-  const { data: places } = await api('/places');
-  const { data: artifacts } = await api('/artifacts', {
-    params: {
-      populate: '*',
-    },
-  });
-
-  return {
-    props: {
-      categories: categories.data,
-      classifications: classifications.data,
-      places: places.data,
-      artifacts: artifacts.data,
-    },
-  };
 }
 
 function Arrow(props: any) {
@@ -516,4 +554,32 @@ function Arrow(props: any) {
       )}
     </svg>
   );
+}
+
+export async function getStaticProps() {
+  const { data: placesResponse } = await client.query({
+    query: GET_PLACES_QUERY,
+  });
+  const { data: artifactsResponse } = await client.query({
+    query: GET_ARTIFACTS_QUERY,
+  });
+  const { data: statusesResponse } = await client.query({
+    query: GET_STATUSES_QUERY,
+  });
+  const { data: categoriesResponse } = await client.query({
+    query: GET_CATEGORIES_QUERY,
+  });
+
+  return {
+    props: {
+      places: placesResponse.places ? placesResponse.places : [],
+      artifacts: artifactsResponse.artifacts ? artifactsResponse.artifacts : [],
+      statuses: statusesResponse.artifactStatuses
+        ? statusesResponse.artifactStatuses
+        : [],
+      categories: categoriesResponse.categories
+        ? categoriesResponse.categories
+        : [],
+    },
+  };
 }

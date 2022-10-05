@@ -1,17 +1,15 @@
 import { IDefault } from './IDefault';
-import { IClassification } from './IClassification';
+import { IStatus } from './IStatus';
 import { ICategories } from './ICategories';
 import { IPlace } from './IPlace';
 
 export interface IArtifacts extends IDefault {
-  attributes: {
-    path: string;
-    image: string;
-    power: number;
-    title: string;
-    description: string;
-    artifact_status: { data: IClassification };
-    category: { data: ICategories };
-    place: { data: IPlace };
-  };
+  image: string;
+  power: number;
+  title: string;
+  description: string;
+  slug: string;
+  artifactStatus: IStatus;
+  category: ICategories;
+  place: IPlace;
 }

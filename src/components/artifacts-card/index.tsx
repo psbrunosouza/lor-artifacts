@@ -1,6 +1,6 @@
 interface IArtifactCardProps {
   type: string;
-  status: 'special' | 'rare' | 'legend';
+  status: string;
   power: number;
   title: string;
   image: string;
@@ -13,19 +13,9 @@ export function ArtifactCard({
   title,
   image,
 }: IArtifactCardProps) {
-  function getColorByStats(): string {
-    const colors = {
-      rare: '#31E991',
-      special: '#E931E1',
-      legend: '#E9B531',
-    };
-
-    return colors[status];
-  }
-
   return (
     <div
-      style={{ borderColor: getColorByStats() }}
+      style={{ borderColor: status }}
       className="h-[320px] w-[240px] flex relative bg-lor-100 rounded-[12px] border-2 flex justify-center items-center"
     >
       {image ? (
@@ -45,7 +35,7 @@ export function ArtifactCard({
         </div>
       )}
       <div
-        style={{ borderColor: getColorByStats() }}
+        style={{ borderColor: status }}
         className="h-[52px] flex items-center justify-center absolute bottom-[-25px] left-[-15px] w-[52px] bg-lor-100 rounded-[50%] border-2 "
       >
         <img src={type} width="24px" height="24px" alt={title} />
@@ -53,13 +43,13 @@ export function ArtifactCard({
 
       <div
         style={{
-          borderColor: getColorByStats(),
+          borderColor: status,
           transform: 'translate(-50%, -50%)',
         }}
         className="h-[52px] flex justify-center items-center w-[60%] md:w-[60%] lg:w-[60%] rounded-[12px] absolute bottom-[-50px] left-[50%] bg-lor-100 border-2"
       >
         <span
-          style={{ color: getColorByStats() }}
+          style={{ color: status }}
           className="w-full text-center font-bold"
         >
           {title}
@@ -68,8 +58,8 @@ export function ArtifactCard({
 
       <div
         style={{
-          backgroundColor: getColorByStats(),
-          borderColor: getColorByStats(),
+          backgroundColor: status,
+          borderColor: status,
         }}
         className="h-[52px] flex justify-center items-center absolute bottom-[-25px] right-[-15px] w-[52px] rounded-[50%] border-2"
       >
