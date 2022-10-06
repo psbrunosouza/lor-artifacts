@@ -93,7 +93,7 @@ export default function Slug({ artifact }: IDetailsProps) {
           property="og:description"
           content={`Detailment about ${artifact.title} artifact`}
         />
-        <meta property="og:image" content="/assets/images/tolkien-logo.png" />
+        <meta property="og:image" content="/assets/images/tolkien-logo.svg" />
         <title>Tolkien Universe - {artifact.title}</title>
       </Head>
 

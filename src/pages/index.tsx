@@ -232,7 +232,7 @@ export default function Home({
           property="og:description"
           content="A website to catalog artifacts from Tolkien universe"
         />
-        <meta property="og:image" content="/assets/images/tolkien-logo.png" />
+        <meta property="og:image" content="/assets/images/tolkien-logo.svg" />
         <title>Tolkien Universe - Artifacts</title>
       </Head>
 

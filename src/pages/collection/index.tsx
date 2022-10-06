@@ -112,7 +112,7 @@ export default function Collection({ artifacts }: ICollectionPageProps) {
           property="og:description"
           content="A list of artifacts from tolkien universe"
         />
-        <meta property="og:image" content="/assets/images/tolkien-logo.png" />
+        <meta property="og:image" content="/assets/images/tolkien-logo.svg" />
         <title>Tolkien Universe - Collection</title>
       </Head>
 
