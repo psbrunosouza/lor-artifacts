@@ -224,6 +224,15 @@ export default function Home({
   return (
     <Layout>
       <Head>
+        <meta
+          property="og:title"
+          content="Home | Tolkien Universe - Artifacts"
+        />
+        <meta
+          property="og:description"
+          content="A website to catalog artifacts from Tolkien universe"
+        />
+        <meta property="og:image" content="/assets/images/tolkien-logo.png" />
         <title>Tolkien Universe - Artifacts</title>
       </Head>
 
